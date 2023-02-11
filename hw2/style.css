@@ -1,11 +1,33 @@
-.main{
+.main {
    width: fit-content;
    margin: 0 auto;
    padding: 20px;
 }
-ol, a{
+
+ol,
+a {
    font-size: 2rem;
-};
-li{
+}
+
+;
+
+li {
    content: "\221A";
+}
+
+;
+
+#greeting {
+   width: fit-content;
+   margin: 0 auto;
+}
+
+.hw_link {
+   font-size: 32px;
+   text-decoration: none;
+
+}
+
+.hw_link:hover {
+   box-shadow: 0px 3px 0px 0px rgb(0, 0, 255);
 }
