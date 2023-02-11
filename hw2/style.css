@@ -1,0 +1,11 @@
+.main{
+   width: fit-content;
+   margin: 0 auto;
+   padding: 20px;
+}
+ol, a{
+   font-size: 2rem;
+};
+li{
+   content: "\221A";
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <title>Home work JS 2023</title>
+</head>
+
+<body>
+   <div class="main">
+      <h1 id="greeting"></h1>
+      <a class="hw_link" href="./hw2/home_work_2.html">ДЗ №2</a>
+
+   </div>
+   <style>
+      body{
+         border-color: antiquewhite;
+      }
+      .main {
+         width: 100%;
+         padding: 20px;
+      }
+
+      #greeting {
+         width: fit-content;
+         margin: 0 auto;
+      }
+      .hw_link{
+         font-size: 32px;
+         text-decoration: none;
+         
+      }
+      .hw_link:hover{
+         box-shadow: 0px 3px 0px 0px rgb(0, 0, 255);
+      }
+   </style>
+   <script>
+      let today = new Date();
+      let now = today.toLocaleString();
+
+      let greeting = document.getElementById('greeting')
+      greeting.innerHTML = "Hello world, today " + now
+   </script>
+   <script src="./script.js"></script>
+
+
+</body>
+
+</html>

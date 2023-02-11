@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 0. Обчислити значення виразів</title>
+</head>
+
+<body>
+   <div class="main">
+      <h1>Задача 0</h1>
+
+   </div>
+   <script>
+      //Создаем переменные и запрос на их значения
+      let a = parseFloat(prompt('Введите число a'))
+      let b = parseFloat(prompt('Введите число b'))
+      let c = parseFloat(prompt('Введите число c'))
+
+      //Создаем переменные для их вычисления и дальнейший вывод в html
+      let s1 = a + 12 + b;
+      let s2 = Math.sqrt((a + b) / (2 * a));
+      let s3 = Math.cbrt((a + b) * c);
+      s3 = Math.pow(s3, 3) //возводим в 3 степень
+      let s4 = Math.sin(a / (-b))
+      console.log(s3);
+
+      document.write(`
+      <ol>
+         <li>S<sub>1</sub> = ${s1}</li>
+         <li>S<sub>2</sub> = ${s2}</li>
+         <li>S<sub>3</sub> = ${s3}</li>
+         <li>S<sub>4</sub> = ${s4}</li>
+      </ol>`)
+   </script>
+</body>
+
+</html>
