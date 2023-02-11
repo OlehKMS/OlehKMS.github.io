@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 1</title>
+</head>
+
+<body>
+   <div class="main">
+      <h1>Задача 1</h1>
+      <p>Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці
+      </p>
+
+      <script>
+         //Создаем переменные a,b,сумма,умножение,деление
+         let a = parseFloat(prompt('Введите число a'))
+         let b = parseFloat(prompt('Введите число b'))
+         let summa = a + b
+         let multi = a * b
+         let division = a / b
+//Выводим данные в html
+         document.write(`
+         <p>a = ${a}</p>
+         <p>b = ${b}</p>
+         <table border=1>
+         <tbody>
+            <tr>
+               <td>сумма</td>
+               <td>${summa}</td>
+            </tr>
+            <tr>
+               <td>умножение</td>
+               <td>${multi}</td>
+            </tr>
+            <tr>
+               <td>деление</td>
+               <td>${division}</td>
+            </tr>
+         </tbody>
+      </table>
+         `)
+      </script>
+   </div>
+</body>
+
+</html>
