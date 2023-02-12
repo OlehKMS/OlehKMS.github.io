@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 6</title>
+</head>
+
+<body>
+   <div class="main">
+      <h2>Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного
+         товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+      </h2>
+      
+
+   </div>
+   <script>
+      //Создаем переменные стоимость 3 товара и их количество "а также НДС 5% как в чеках"
+      let product1Amount = parseFloat(prompt('Введите количесво первого товара'))
+      let product1price = parseFloat(prompt('Введите цену первого товара'))
+      let allAmount1 = product1Amount * product1price //Находим общую сумму 1 товара
+      let product2Amount = parseFloat(prompt('Введите количесво второго товара'))
+      let product2price = parseFloat(prompt('Введите цену второго товара'))
+      let allAmount2 = product2Amount * product2price //Находим общую сумму 2 товара
+      let product3Amount = parseFloat(prompt('Введите количесво третьего товара'))
+      let product3price = parseFloat(prompt('Введите цену третьего товара'))
+      let allAmount3 = product3Amount * product3price //Находим общую сумму 3 товара
+      let tax = 0.05
+      let tax1 = tax * allAmount1
+      let tax2 = tax * allAmount2
+      let tax3 = tax * allAmount3
+      //Выводим данные в html
+      document.write(`
+      <table style="width:100%">
+<tr>
+   <th>Наименование товара, работ, услуг</th>
+   <th>Кол-во(единиц)</th>
+   <th>Цена за единицу</th>
+   <th>Сумма</th>
+   <th>НДС</th>
+</tr>
+<tr>
+   <td>Товар №1</td>
+   <td> ${product1Amount} </td>
+   <td>${product1price}</td>
+   <td>${allAmount1}</td>
+   <td>${tax1}</td>
+   
+</tr>
+<tr>
+   <td>Товар №2</td>
+   <td>${product2Amount}</td>
+   <td>${product2price}</td>
+   <td>${allAmount2}</td>
+   <td>${tax2}</td>
+   
+</tr>
+<tr>
+   <td>Товар №2</td>
+   <td>${product3Amount}</td>
+   <td>${product3price}</td>
+   <td>${allAmount3}</td>
+   <td>${tax3}</td>
+   
+</tr>
+</table>
+     `)
+   </script>
+</body>
+
+</html>

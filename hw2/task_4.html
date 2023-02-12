@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,20 @@
 </head>
 <body>
    <div class="main">
+<h2>Задача 4. Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+</h2>
 
    </div>
    <script>
-      
+      //Создаем переменные сантиметры, метры, километры
+      let sm = parseFloat(prompt('Введите длину в сантиметрах'))
+      let metr = sm / 100
+      let km = sm / 100000
+      //Выводим данные в html
+      document.write(`
+     <p> Количество сантиметров = ${sm} см</p>
+     <p> Количество метров = ${metr} м</p>
+     <p> Количество километров = ${km} км</p>`)
    </script>
 </body>
 </html>

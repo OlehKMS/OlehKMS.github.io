@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 5</title>
+</head>
+<body>
+   <div class="main">
+<h2>Задача 5. Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.
+</h2>
+
+   </div>
+   <script>
+      //Создаем переменные секунды, минуты, часы
+      let sec = parseFloat(prompt('Введите количество секунд'))
+      let minut = sec / 60
+      let hours = sec / 360
+      //Выводим данные в html
+      document.write(`
+     <p> Количество секунд = ${sec} </p>
+     <p> Количество минут = ${minut} </p>
+     <p> Количество часов = ${hours} </p>`)
+   </script>
+</body>
+</html>
