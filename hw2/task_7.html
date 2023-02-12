@@ -8,10 +8,23 @@
    <title>Задача 7</title>
 </head>
 <body>
+   <h2>Задача 7. Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).
+      Как день месяца может быть 0??
+   </h2>
+
    
    <script>
-      
-      document.write(``)
+//Используем Math.random для выведния случайных чисед
+//После исрользуем toFixed для вывода целых чисел
+      let month = (Math.random() * 11) + 1 //Добавляем 1 для возвращения числа от 1
+      month = (+month.toFixed())
+      let day = (Math.random() * 5) + 1 // Как день месяца может быть 0??
+      day = (+day.toFixed())
+      let sum = month + day
+      document.write(`
+      <p> месяц = ${month}</p>
+      <p> день = ${day} </p>
+      <p> сумма = ${sum}</p>`)
    </script>
 </body>
 </html>

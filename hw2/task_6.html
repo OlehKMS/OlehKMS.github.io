@@ -29,9 +29,12 @@
       let product3price = parseFloat(prompt('Введите цену третьего товара'))
       let allAmount3 = product3Amount * product3price //Находим общую сумму 3 товара
       let tax = 0.05
-      let tax1 = tax * allAmount1
+      let tax1 = tax * allAmount1 
+      tax1 = (+tax1.toFixed(2)) //Выводим только до 100
       let tax2 = tax * allAmount2
+      tax2 = (+tax2.toFixed(2))
       let tax3 = tax * allAmount3
+      tax3 = (+tax3.toFixed(2))
       //Выводим данные в html
       document.write(`
       <table style="width:100%">
