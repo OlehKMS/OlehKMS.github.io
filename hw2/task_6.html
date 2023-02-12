@@ -14,7 +14,7 @@
       <h2>Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного
          товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
       </h2>
-      
+
 
    </div>
    <script>
@@ -28,13 +28,16 @@
       let product3Amount = parseFloat(prompt('Введите количесво третьего товара'))
       let product3price = parseFloat(prompt('Введите цену третьего товара'))
       let allAmount3 = product3Amount * product3price //Находим общую сумму 3 товара
+      let summa = allAmount1 + allAmount2 + allAmount3 //Находим общую сумму всех товаров
       let tax = 0.05
-      let tax1 = tax * allAmount1 
+      let tax1 = tax * allAmount1
       tax1 = (+tax1.toFixed(2)) //Выводим только до 100
       let tax2 = tax * allAmount2
       tax2 = (+tax2.toFixed(2))
       let tax3 = tax * allAmount3
       tax3 = (+tax3.toFixed(2))
+      let taxAllProd = summa * tax
+      taxAllProd = (+taxAllProd.toFixed(2))
       //Выводим данные в html
       document.write(`
       <table style="width:100%">
@@ -44,7 +47,7 @@
    <th>Цена за единицу</th>
    <th>Сумма</th>
    <th>НДС</th>
-</tr>
+   </tr>
 <tr>
    <td>Товар №1</td>
    <td> ${product1Amount} </td>
@@ -68,7 +71,13 @@
    <td>${allAmount3}</td>
    <td>${tax3}</td>
    
+   
 </tr>
+<tr> <td>Общая Сумма</td>
+   <td></td>
+   <td></td>
+   <td>${summa}</td>
+   <td>${taxAllProd}</td>
 </table>
      `)
    </script>
