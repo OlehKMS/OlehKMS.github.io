@@ -5,14 +5,32 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style.css">
-   <title>Задача 1</title>
+   <title>Задача 4</title>
 </head>
 <body>
    <div class="main">
-
+<h1>З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).</h1>
    </div>
    <script>
-      
+      // Отримаємо вік Usera
+      const userAge = prompt("Введіть ваш вік")
+      // Створюємо числові змінні які приблизно відповідають максимальний рік статусу
+      const kindergarten = 6
+      const school = 17
+      const student = 25
+      const worker = 65
+      // Прописуємо всі можливі варіанти умов порівняння
+      if(userAge < worker && userAge < student && userAge < school && userAge < kindergarten) 
+      document.write('<div class="main"><h2>дитинa у садочку</h2></div>')
+      else if (userAge < worker && userAge < student && userAge <= school && userAge >= kindergarten)
+      document.write('<div class="main"><h2>школяр</h2></div>')
+      else if (userAge < worker && userAge <= student && userAge > school && userAge > kindergarten)
+      document.write('<div class="main"><h2>студент</h2></div>')
+      else if (userAge <= worker && userAge > student && userAge > school && userAge > kindergarten)
+      document.write('<div class="main"><h2>працівник</h2></div>')
+      else
+      document.write('<div class="main"><h2>пенсіонер</h2></div>')
+
    </script>
 </body>
 </html>

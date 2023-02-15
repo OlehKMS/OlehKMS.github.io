@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style.css">
-   <title>Задача 1</title>
+   <title>Задача 3</title>
 </head>
+
 <body>
    <div class="main">
-
+      <h1>Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.</h1>
    </div>
    <script>
-      
+      const numberRandom = Math.floor(Math.random() * (6 - 1)) + 1; // Випадкове число від 1 до 5
+      console.log(numberRandom); //для бачення правильної відповіді
+      const number1 = prompt("Введіть перше число від 1 до 5")
+      let number2 // Оголошуємо друге число але не надаєммо значення
+      if (numberRandom == number1)
+         document.write('<div class="main">Ви вгадали</div>')
+      else if (numberRandom !== number1)
+         number2 = parseInt(prompt("Не вгадали, остання спроба")) //надаємо другому число значення якщо перша спроба невір
+      if (number2 == numberRandom)
+         document.write('<div class="main">Вгадали</div>')
+         
+
    </script>
 </body>
+
 </html>
