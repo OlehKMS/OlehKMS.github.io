@@ -9,10 +9,23 @@
 </head>
 <body>
    <div class="main">
-
+      <h1>З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.
+      </h1>
    </div>
    <script>
-      
+      // Отримаємо два значення  від USER та знаходимо їхню різницю а також ціна білета
+      let productPrice = parseInt(prompt("Введіть ціну товара"))  //Ціна продукта
+      let moneyHave = parseInt(prompt("Введіть кількість грошей")) // Скільки має грошей
+      const diffMoneyPrice = moneyHave - productPrice // рахуємо різницю між грошима та продуктами
+      const priceTicket = 4
+
+      //Прописуємо умови та виводимо на екран
+      if(productPrice > moneyHave) // також можно порівняти (diffMoneyPrice < 0)
+      document.write('<div class="main">Недостатньо коштів</div>')
+      else if (diffMoneyPrice >= priceTicket) // використовуємо diffMoneyPrice щоб зпузуміти чи вистачить на білет
+      document.write('<div class="main">Бажаєте купити лотерею за 4 грн?</div>')
+      else if (productPrice < moneyHave)
+      document.write('<div class="main">Дякую за покупку</div>')
    </script>
 </body>
 </html>
