@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style.css">
-   <title>Задача 1</title>
+   <title>Задача 7</title>
 </head>
+
 <body>
    <div class="main">
-
+      <h1>З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься</h1>
    </div>
    <script>
-      
+      ////Від user зберігаємо номер місяця
+      const userNumber = parseInt(prompt("Введіть номер місяця"))
+      //Кожний місяц отримає порядковий номер
+      const january = 1
+      const february = 2
+      const march = 3
+      const april = 4
+      const may = 5
+      const june = 6
+      const july = 7
+      const augst = 8
+      const september = 9
+      const oktober = 10
+      const november = 11
+      const december = 12
+      //порівнюємо та виводимо
+      if (january === userNumber || userNumber === february || userNumber === december)
+         document.write(`<div class="main"><h2>Зима</h2></div>`)
+      else if (userNumber === march || userNumber === april || userNumber === may)
+         document.write(`<div class="main"><h2>Весна</h2></div>`)
+      else if (userNumber === june || userNumber === july || userNumber === augst)
+         document.write(`<div class="main"><h2>Літо</h2></div>`)
+      else if (userNumber === september || userNumber === oktober || userNumber === november)
+         document.write(`<div class="main"><h2>Осінь</h2></div>`)
    </script>
 </body>
+
 </html>

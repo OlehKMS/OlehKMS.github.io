@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style.css">
-   <title>Задача 1</title>
+   <title>Задача 6</title>
 </head>
+
 <body>
    <div class="main">
-
+      <h1>З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+      </h1>
    </div>
    <script>
-      
+      //Від user зберігаємо номер тижня в userNumber
+      const userNumber = parseInt(prompt("Введіть номер тижня"))
+      //кожному дня тижня даємо номер
+      const monday = 1
+      const thusday = 2
+      const wensday = 3
+      const thursday = 4
+      const friday = 5
+      const saturday = 6
+      const sunday = 7
+      //Перевірка співвідношення та виводимо
+      if (userNumber === monday)
+         document.write(`<div class="main"><h2>Понеділок</h2></div>`)
+      else if (userNumber === thusday)
+         document.write(`<div class="main"><h2>Вівторок</h2></div>`)
+      else if (userNumber === wensday)
+         document.write(`<div class="main"><h2>Середа</h2></div>`)
+      else if (userNumber === thursday)
+         document.write(`<div class="main"><h2>Четверг</h2></div>`)
+      else if (userNumber === friday)
+         document.write(`<div class="main"><h2>П'ятниця</h2></div>`)
+      else if (userNumber === saturday)
+         document.write(`<div class="main"><h2>Субота</h2></div>`)
+      else if (userNumber === sunday)
+         document.write(`<div class="main"><h2>Неділя</h2></div>`)
+         else
+         document.write(`<div class="main"><h2>Введіть номер тижня від 1 до 7</h2></div>`)
    </script>
 </body>
+
 </html>
