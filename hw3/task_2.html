@@ -19,13 +19,18 @@
       const diffMoneyPrice = moneyHave - productPrice // рахуємо різницю між грошима та продуктами
       const priceTicket = 4
 
+      let result
+
       //Прописуємо умови та виводимо на екран
       if(productPrice > moneyHave) // також можно порівняти (diffMoneyPrice < 0)
-      document.write('<div class="main">Недостатньо коштів</div>')
+      result = "Недостатньо коштів"
       else if (diffMoneyPrice >= priceTicket) // використовуємо diffMoneyPrice щоб зпузуміти чи вистачить на білет
-      document.write('<div class="main">Бажаєте купити лотерею за 4 грн?</div>')
-      else if (productPrice < moneyHave)
-      document.write('<div class="main">Дякую за покупку</div>')
+      result = "Бажаєте купити лотерею за 4 грн?"
+      else 
+      result = "Дякую за покупку"
+
+
+      document.write(`<div class="main">${result}</div>`)
    </script>
 </body>
 </html>

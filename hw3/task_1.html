@@ -22,13 +22,18 @@
       const children2Name = (prompt("Введіть ім'я другої дитини"))
       const children2NameСandies = parseInt(prompt(`Введіть кількість цукерок у ${children2Name}`))
 
-      //Прописуємо умови та виводимо на екран
+      //Прописуємо умови 
+      let result
       if (children1NameСandies == children2NameСandies)
-         document.write('<div class="main">кількість однакова</div>')
+         result = "кількість однакова"
       else if (children1NameСandies > children2NameСandies)
-         document.write(`<div class="main">${children1Name}</div>`)
-      else if (children1NameСandies < children2NameСandies)
-         document.write(`<div class="main">${children2Name}</div>`)
+         result = `${children1Name} має більше цукерок`
+      else
+         result = `${children2Name} має більше цукерок`
+
+
+      //виводимо на екран
+      document.write(`<div class= "main"> ${result}</div>`)
 
    </script>
 </body>

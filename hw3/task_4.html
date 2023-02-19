@@ -19,17 +19,21 @@
       const school = 17
       const student = 25
       const worker = 65
+      let result
       // Прописуємо всі можливі варіанти умов порівняння
-      if(userAge < worker && userAge < student && userAge < school && userAge < kindergarten) 
-      document.write('<div class="main"><h2>дитинa у садочку</h2></div>')
-      else if (userAge < worker && userAge < student && userAge <= school && userAge >= kindergarten)
-      document.write('<div class="main"><h2>школяр</h2></div>')
-      else if (userAge < worker && userAge <= student && userAge > school && userAge > kindergarten)
-      document.write('<div class="main"><h2>студент</h2></div>')
-      else if (userAge <= worker && userAge > student && userAge > school && userAge > kindergarten)
-      document.write('<div class="main"><h2>працівник</h2></div>')
+      if(userAge < kindergarten) 
+      result ="дитинa у садочку"
+      else if (userAge <= school)
+      result = "школяр"
+      else if ( userAge <= student)
+      result = "студент"
+      else if (userAge <= worker)
+      result= "працівник"
       else
-      document.write('<div class="main"><h2>пенсіонер</h2></div>')
+      result = "пенсіонер"
+
+
+      document.write(`<div class="main"><h2>${result}</h2></div>`)
 
    </script>
 </body>

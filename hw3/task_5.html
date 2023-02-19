@@ -19,14 +19,16 @@
       const categoryA = "A" 
       const categoryB = "B"
       const categoryC = "C"
+      let result
       // порівнюємо категорії та виводимо але працює лище з анг. літерами
       if(categoryUser === categoryA)
-      document.write(`<div class="main"><h2>Мотоцикл</h2></div>`)
+      result = "Мотоцикл"
       else if(categoryUser === categoryB)
-      document.write(`<div class="main"><h2>легковий автомобіль</h2></div>`)
-      else if(categoryUser === categoryC)
-      document.write(`<div class="main"><h2>вантажний автомобіль</h2></div>`)
-
-   </script>
+      result = "легковий автомобіль"
+      else (categoryUser === categoryC)
+      result = "вантажний автомобіль"
+      
+      document.write(`<div class="main"><h2>${result}</h2></div>`)
+      </script>
 </body>
 </html>

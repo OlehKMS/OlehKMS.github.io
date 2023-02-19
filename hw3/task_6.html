@@ -17,6 +17,7 @@
    <script>
       //Від user зберігаємо номер тижня в userNumber
       const userNumber = parseInt(prompt("Введіть номер тижня"))
+      let result
       //кожному дня тижня даємо номер
       const monday = 1
       const thusday = 2
@@ -27,21 +28,23 @@
       const sunday = 7
       //Перевірка співвідношення та виводимо
       if (userNumber === monday)
-         document.write(`<div class="main"><h2>Понеділок</h2></div>`)
+         result = "Понеділок"
       else if (userNumber === thusday)
-         document.write(`<div class="main"><h2>Вівторок</h2></div>`)
+         result = "Вівторок"
       else if (userNumber === wensday)
-         document.write(`<div class="main"><h2>Середа</h2></div>`)
+         result = "Середа"
       else if (userNumber === thursday)
-         document.write(`<div class="main"><h2>Четверг</h2></div>`)
+         result = "Четверг"
       else if (userNumber === friday)
-         document.write(`<div class="main"><h2>П'ятниця</h2></div>`)
+         result = "П'ятниця"
       else if (userNumber === saturday)
-         document.write(`<div class="main"><h2>Субота</h2></div>`)
+         result = "Субота"
       else if (userNumber === sunday)
-         document.write(`<div class="main"><h2>Неділя</h2></div>`)
-         else
-         document.write(`<div class="main"><h2>Введіть номер тижня від 1 до 7</h2></div>`)
+         result = "Неділя"
+      else
+         result = "Введіть номер тижня від 1 до 7"
+
+      document.write(`<div class="main"><h2>${result}</h2></div>`)
    </script>
 </body>
 

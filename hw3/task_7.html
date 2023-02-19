@@ -16,6 +16,7 @@
    <script>
       ////Від user зберігаємо номер місяця
       const userNumber = parseInt(prompt("Введіть номер місяця"))
+      let result
       //Кожний місяц отримає порядковий номер
       const january = 1
       const february = 2
@@ -30,14 +31,42 @@
       const november = 11
       const december = 12
       //порівнюємо та виводимо
-      if (january === userNumber || userNumber === february || userNumber === december)
-         document.write(`<div class="main"><h2>Зима</h2></div>`)
-      else if (userNumber === march || userNumber === april || userNumber === may)
-         document.write(`<div class="main"><h2>Весна</h2></div>`)
-      else if (userNumber === june || userNumber === july || userNumber === augst)
-         document.write(`<div class="main"><h2>Літо</h2></div>`)
-      else if (userNumber === september || userNumber === oktober || userNumber === november)
-         document.write(`<div class="main"><h2>Осінь</h2></div>`)
+      // if (january === userNumber || userNumber === february || userNumber === december)
+      //    document.write(`<div class="main"><h2>Зима</h2></div>`)
+      // else if (userNumber === march || userNumber === april || userNumber === may)
+      //    document.write(`<div class="main"><h2>Весна</h2></div>`)
+      // else if (userNumber === june || userNumber === july || userNumber === augst)
+      //    document.write(`<div class="main"><h2>Літо</h2></div>`)
+      // else if (userNumber === september || userNumber === oktober || userNumber === november)
+      //    document.write(`<div class="main"><h2>Осінь</h2></div>`)
+      //    else
+      //    document.write(`<div class="main"><h2>Введіть цифру</h2></div>`)
+      switch (userNumber) {
+         case 1:
+         case 2:
+         case 12:
+            result = "Зима"
+            break;
+         case 3:
+         case 4:
+         case 5:
+            result = "Весна"
+            break;
+         case 6:
+         case 7:
+         case 8:
+            result = "Літо"
+            break;
+         case 9:
+         case 10:
+         case 11:
+            result = "Осінь"
+            break;
+         default:
+            result = "Введіть номер"
+            break;
+      }
+      document.write(`<div class="main"><h2>${result}</h2></div>`)
    </script>
 </body>
 
