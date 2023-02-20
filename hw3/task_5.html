@@ -25,9 +25,10 @@
       result = "Мотоцикл"
       else if(categoryUser === categoryB)
       result = "легковий автомобіль"
-      else (categoryUser === categoryC)
+      else if(categoryUser === categoryC)
       result = "вантажний автомобіль"
-      
+      else
+      result = "Введіть категорію"
       document.write(`<div class="main"><h2>${result}</h2></div>`)
       </script>
 </body>
