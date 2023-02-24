@@ -6,22 +6,22 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="./style.css">
-   <title>Document</title>
+   <title>Задача 1</title>
 </head>
 
 <body>
    <h1>Задача 1. Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових
       чисел вводиться користувачем.</h1>
-   <ul class="main" id="mylist"></ul>
+   <ul id="mylist"></ul>
    <script>
-      let ul = document.getElementById("mylist");
-      const quanNumbers = parseInt(prompt("Введіть кількість чисел"))
+      const userNumbers = parseInt(prompt("Введіть кількість чисел")) //Запрашиваем кол. чисел
+      const myList = document.getElementById('mylist') //Обращаемся через id к блоку для дальнейшего
+      //выведения результата в маркированный список
 
-      for (let i = 0; i < quanNumbers; i++) {
-         let rundomNumber = Math.floor(Math.random() * 100) + 1
-         let li = document.createElement("li")
-         li.appendChild(document.createTextNode(`${rundomNumber}`));
-         ul.appendChild(li)
+      for (let i = 0; i < userNumbers; i++) {
+
+         let rundomNumber = Math.floor(Math.random() * 100) + 1//Переменная с рандомными числами от 1-100 включительно 1 и 100
+         myList.insertAdjacentHTML('beforeend', `<li>${rundomNumber}</li>`) //Добавляем в конец списка рандомные числа
 
       }
    </script>

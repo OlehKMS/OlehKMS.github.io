@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 6</title>
+</head>
+
+<body>
+
+   <h1>Задача 6. Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+   </h1>
+   <script>
+      let countNum = 1
+      for (let i = 1; i <= 3; i++) { //Создаем  3 таблицы
+         document.write(`<table> `)   //Открываем таблицу
+
+         for (let j = 0; j < 3; j++) {
+            document.write(`<tr>`)
+
+            for (let k = 1; k <= 3; k++) {  //считаем до +3 цифры
+               document.write(`<td> ${countNum} </td>`)
+               countNum++
+            }
+            document.write(`</tr>`)
+         }
+         document.write(`</table>`) // Закрываем таб.
+      }
+   </script>
+</body>
+
+</html>
