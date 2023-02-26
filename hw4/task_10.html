@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 10</title>
+</head>
+
+<body>
+   <h1>Задача 10. Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами. </h1>
+   <script>
+      let userNum1 = parseInt(prompt('Введите 1-е любое минимальное целое число')) // первое число let потом будем менять
+      const userNum2 = parseInt(prompt('Введите 2-е любое максимальное целое число'))// второе число оно тольео для сравнения const
+
+      let oddNumSum = 0 // присваиваем 0 иначе будет Nan
+      for (userNum1; userNum1 <= userNum2; userNum1++) { //сравниваем первое второе число и по циклу
+         if (userNum1 % 2 !== 0) //Находим нечетные
+            oddNumSum = oddNumSum + userNum1// прибавляем
+
+         }
+         
+         document.write(`<h1>Сумма нечетных ${oddNumSum}</h1>`)
+
+   </script>
+</body>
+
+</html>

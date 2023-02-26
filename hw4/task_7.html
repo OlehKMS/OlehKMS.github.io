@@ -11,7 +11,16 @@
    <h1>Задача 7. Вивести на екран N абзаців (N вводиться користувачем)</h1>
    
    <script>
-      
+      const titleParagraphNum = parseInt(prompt('Введите количество параграфов')) // Берем у польз. кол-во абзацев
+
+      for (let title = 1; title <= titleParagraphNum; title++) { 
+         document.write(`<h1> Загаловок ${title}</h1>`)//Выводим заголовок
+         for (let paragraph = 1; paragraph <= title; paragraph++) { //Сравниваем кол-во разделов с параграфом
+            document.write(`<p class="main">Раздел ${title}, параграф ${paragraph} </p>`)//Выводим
+            
+         }
+         
+      }
    </script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 9</title>
+</head>
+
+<body>
+   <h1>Задача 9. Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати
+      confirm).</h1>
+   <script>
+      alert('Загадайте число от 1-10')
+      let answer //Обьявляем в глобольной вид. потому что дальше do{} не видит и проверка не пройдет
+      do {
+         const randomNum = (Math.floor(Math.random() * 10) + 1) //Случайное число от 1-10 
+         answer = confirm(`Это число ${randomNum}?`)// Спрашиваем то ли число
+      } while (answer === false); //Цикл работает пока нажимаем отмена
+   </script>
+</body>
+
+</html>
