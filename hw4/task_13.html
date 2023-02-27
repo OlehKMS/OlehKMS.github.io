@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Морський бій</title>
+</head>
+
+<body>
+   <h1>13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів
+      користувач намагається потопити корабель. </h1>
+   <script>
+      const coordinatesN = parseInt(prompt('Введите ширину поля')) //Задаём координаты у user
+      const coordinatesM = parseInt(prompt("Введите высоту поля"))
+      const quantityShots = parseInt(prompt("Введите количество выстрелов"))
+
+      const coordShipN = Math.floor(Math.random() * coordinatesN) + 1 //Выставляем корабль на поле
+      console.log(coordShipN);
+      const coordShipM = Math.floor(Math.random() * coordinatesM) + 1
+      console.log(coordShipM);
+
+      
+
+      
+      for (let i = 0; i <= quantityShots; i++) {
+         let userShotN = parseInt(prompt('Введите значение по ширине поля'))
+         let userShotM = parseInt(prompt('Введите значение по высоте поля'))
+         if (userShotN === coordShipN && userShotM === coordShipM){ // Проверка в случае победы
+            document.write(`ВЫ попали, корабль потоплен`)
+            i = quantityShots} // Присваиваем для остановки цикла
+            else
+            alert("Вы промазали")// 
+      }
+   </script>
+</body>
+
+</html>

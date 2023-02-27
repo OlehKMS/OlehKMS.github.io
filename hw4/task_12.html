@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 12</title>
+</head>
+
+<body>
+   <h1>Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як
+      одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору
+      зображення за номером).</h1>
+   <!-- <img src="./img/lemon_100.svg" alt="lemon">
+   <img src="./img/cherry_200.svg" alt="cherry">
+   <img src="./img/tomato_500.svg" alt="tomato">
+   <img src="./img/lucky_seven_10k.svg" alt="lucky"> -->
+   <script>
+      let win100points = 0, win200points = 0, win500points = 0, win10kpoints = 0 // Создаем переменные в случае выигрыша
+
+      for (let i = 1; i <= 3; i++) { // выводим до i кол-ва картинок
+         const randNum = Math.floor(Math.random() * 4) + 1
+         document.write(`<div>`)
+         switch (randNum) {   // Сравниваем
+            case 1:
+               document.write(`<img src="./img/lemon_100.svg" alt="lemon"`)
+               win100points++ // Прибавляем балы для выигрыша
+               break;
+            case 2:
+               document.write(`<img src="./img/cherry_200.svg" alt="cherry"`)
+               win200points++
+               break;
+            case 3:
+               document.write(`<img src="./img/tomato_500.svg" alt="tomato"`)
+               win500points++
+               break;
+            case 4:
+               document.write(`<img src="./img/lucky_seven_10k.svg" alt="lucky"`)
+               win10kpoints++
+               break;
+
+
+         }
+         if (win100points === 3)//Проверка на выигрш
+            document.write(`<h1>Вы выиграли 100 грн.</h1>`)
+
+         if (win200points === 3)
+            document.write(`<h1>Вы выиграли 200 грн.</h1>`)
+         if (win500points === 3)
+            document.write(`<h1>Вы выиграли 500 грн.</h1>`)
+         if (win10kpoints === 3)
+            document.write(`<h1>Вы выиграли 10000 грн. </h1>`)
+
+         
+      }
+
+   </script>
+</body>
+
+</html>

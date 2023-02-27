@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,26 @@
    <link rel="stylesheet" href="./style.css">
    <title>Задача 11</title>
 </head>
+
 <body>
    <h1>Задача 11. Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.</h1>
-   <script>
+    <script>
+      const num1 = parseInt(prompt('Ведите первое целое число'))
+      const num2 = parseInt(prompt('Ведите второе целое число'))
 
+      let counter = 0
+      let oddNumSum = 0
+      for (let i = num1; i <= num2; i++) {
+         if (i%2 != 0&& counter < 5) {
+            counter++
+            oddNumSum += i
+         }
+
+      }
+      document.write(`<h1>Сумма 5 непарных чисел = ${oddNumSum}</h1>`)
    </script>
+   
+   
 </body>
+
 </html>

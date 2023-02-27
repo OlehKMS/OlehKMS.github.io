@@ -90,3 +90,8 @@ table{
    display: inline-table;
    margin-inline: 20px;
 }
+img{
+   width: auto;
+   height: 84px;
+   margin: 20px;
+}
