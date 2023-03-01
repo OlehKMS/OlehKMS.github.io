@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 2</title>
+</head>
+
+<body>
+   <h1>Задача 2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</h1>
+   <script>
+      const userDay = parseInt(prompt("Введіть номер дня"))
+
+      function workTodayOrNot(daysWeek) {
+         if (daysWeek === 6)
+            return document.write("Вихідний")
+         else if (daysWeek === 7)
+            return document.write("Вихідний")
+         else
+            return document.write("Робочий")
+      }
+      workTodayOrNot(userDay)
+   </script>
+</body>
+
+</html>

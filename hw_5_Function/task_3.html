@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 3</title>
+</head>
+<body>
+   <h1>Задача 3. Створити окремі функції, які для 4 чисел знаходять: суму,добуток,середнє арифметичне,мінімальне значення</h1>
+   <script>
+let userNum1 = parseInt(prompt('Введить число'))
+let userNum2 = parseInt(prompt('Введить число'))
+let userNum3 = parseInt(prompt('Введить число'))
+let userNum4 = parseInt(prompt('Введить число'))
+function summa(n1,n2,n3,n4) {
+   return document.write(`Сума чисел = ${n1+n2+n3+n4}<br>`)
+}
+summa(userNum1,userNum2,userNum3,userNum4)
+function mult(n1,n2,n3,n4) { 
+   return document.write(` Добуток чисел = ${n1*n2*n3*n4}<br>`)
+}
+mult(userNum1,userNum2,userNum3,userNum4)
+
+function average(n1,n2,n3,n4) {
+   return document.write(`Середнє арифметичне чисел = ${(n1*n2*n3*n4)/4}<br>`)
+}
+average(userNum1,userNum2,userNum3,userNum4)
+
+function minNum(n1,n2,n3,n4) {
+   let min = Infinity
+   if(min>n1)
+   min=n1
+   if(min>n2)
+   min=n2
+   if(min>n3)
+   min=n3
+   if(min > n4)
+   min=n4
+   
+   return document.write(`Мінімальне значення = ${min}<br>`)
+}
+minNum(userNum1,userNum2,userNum3,userNum4)
+   </script>
+</body>
+</html>

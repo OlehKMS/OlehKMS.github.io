@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Задача 5</title>
+</head>
+
+<body>
+   <h1>Задача 5. Створити окремі функції, які переводять: Сантиметри у дюйми, Кілограми у фунти,Кілометри у милі.
+   </h1>
+   <script>
+      const userValue = parseInt(prompt('Введіть значення цифрою'))
+      function smInInch(meaningSm) {
+         return meaningSm * 0.393
+      }
+      document.write(`${smInInch(userValue) } Дюйми<br>`)
+
+
+      function kgInFunt(kg) {
+         return kg * 2.20
+      }
+      document.write(`${kgInFunt(userValue) } Фунти<br>`) 
+
+      function kmInMile(km) {
+         return km * 0.621
+      }
+      document.write(`${kmInMile(userValue) } Милі<br>`) 
+   </script>
+</body>
+
+</html>
