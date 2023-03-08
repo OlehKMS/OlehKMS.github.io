@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>task 6</title>
+</head>
+<body>
+   <h1>6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+   </h1>
+   <p>Масив = [49,117,72,11,158,92,12,152,100,79,145,176,144,26,130]</p>
+   <script>
+      const randomArray = [49,117,72,11,158,92,12,152,100,79,145,176,144,26,130]
+
+      for (let it of randomArray) {
+         if (randomArray[0] < it)
+         it = it*2
+         document.write(`${it}, `)
+      }
+      
+   </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Task 10</title>
+</head>
+
+<body>
+   <h1>10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у
+      грн.</h1>
+      <span>масив цін = [669, 1183, 468, 1022, 1092, 469, 1406, 894, 1338, 485, 1389, 822, 1098, 1387, 629]</span> <br>
+   <script>
+      const priceArray = [669, 1183, 468, 1022, 1092, 469, 1406, 894, 1338, 485, 1389, 822, 1098, 1387, 629]
+      const tax20procent = 0.2
+      let payTaxArray = []
+
+      for (const it of priceArray) {
+         payTaxArray.push ((Math.floor(it * tax20procent))+ ' грн')
+      }
+      
+      document.write(`величина сплаченого податку = ${payTaxArray}`)
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>task 8</title>
+</head>
+<body>
+   <h1>8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</h1>
+   <p>масив номерів = ['АК1234АС', 'ВС4321АК', 'AН9876ХJ', 'ОО3456ОВ', 'AМ6543ХО', 'ТЕ7890СО', 'НА9999KК', 'КУ7777КЕ', 'AB1010СN', 'МР2345МР'] </p>
+   <script>
+      const carsNumbers = ['AК1234АС', 'ВС4321АК', 'AН9876ХJ', 'ОО3456ОВ', 'AМ6543ХО', 'ТЕ7890СО', 'НА9999KК', 'КУ7777КЕ', 'AB1010СN', 'МР2345МР'];
+      const carsNumbersFiltrLetterA = carsNumbers.filter(carsNumbers => carsNumbers.startsWith("A"))
+
+      document.write(`<span>масив номерів які починаються на «А» = ${carsNumbersFiltrLetterA}</span>`)
+
+
+   </script>
+</body>
+</html>

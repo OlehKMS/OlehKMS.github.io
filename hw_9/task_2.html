@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Task 2</title>
+</head>
+<body>
+   <div>2. Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.</div>
+   <script>
+      const userElement1 = parseInt(prompt('Введіть кількість одиниць'))//скільки буде "1"
+      const userElement2 = parseInt(prompt('Введіть кількість сімок'))//скільки буде "7"
+      let array = [] //пустий масив
+
+      function fillingArray(value, lenght) { //value який елемент добавляємо,lenght скільки разів
+         for (let i = 0; i < lenght; i++) {
+            array.push(value)
+            
+         }
+         return array
+      }
+      fillingArray(1,userElement1)
+      fillingArray(7,userElement2)
+      console.log(array);
+
+   </script>
+</body>
+</html>
