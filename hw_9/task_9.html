@@ -11,11 +11,12 @@
    <h1>9. Дано масив імен. Сформувати масив з перших літер цих імен.</h1>
    <span>масив імен = ['Vasiya', 'Dasha', 'Masha','Dima', 'Den', 'Kira', 'Sascha', 'Slaix']</span><br>
    <script>
-      let arrayNamesLettersFirst = []
+      // let arrayNamesLettersFirst = []
       const names = ['Vasiya', 'Dasha', 'Masha','Dima', 'Den', 'Kira', 'Sasha', 'Slaix'];
-      arrayNames = names.map(name => name[0])
+      let arrayNamesLettersFirst = names.map(name => name[0])
 
-      document.write(`масив з перших літер = ${arrayNames}`)
+      console.log(arrayNamesLettersFirst);
+      document.write(`масив з перших літер = ${arrayNamesLettersFirst}`)
    </script>
 </body>
 </html>

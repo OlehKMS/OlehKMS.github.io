@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+   </h1>
+   <script>
+      const arr = [1872, 5697, 127, 8714, 1790, 4675, 4512, 3314, 242, 3352, 7798, 474, 1167, 1771, 1720, 3551, 5213, 2720, 6885, 6780, 4234, 1819, 1191, 3952, 1119]
+      document.write(`1872, 5697, 127, 8714, 1790, 4675, 4512, 3314, 242, 3352, 7798, 474, 1167, 1771, 1720, 3551, 5213, 2720, 6885, 6780, 4234, 1819, 1191, 3952, 1119 <br>`)
+      //щоб створити новий масив перебравши маючи масив, підійде filter
+      const newArr = arr.filter(function (element, index) {
+         if (element > 1000) {
+            document.write(index + ',')
+            return index
+         }
+      })
+      console.log(newArr);
+
+
+   </script>
+</body>
+
+</html>
