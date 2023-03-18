@@ -16,10 +16,14 @@ const arr = [1872, 697, 127, 8714, 1790, 4675, 4512, 3314, 1872, 242, 3352, 7798
 
       for (let i = arr.length; i >= 0; i--) { //для знаходження  for але перебирати будемо з кінця
          if (arr[i] > comparativNumber) {
-            document.write(`<br>остання ціна, що більше за 1000 = ${i}`)
+            document.write(`<br>остання ціна, що більше за 1000 = ${i}<br>`)
             break
          } //коли знайшли зупиняємо цикл, обовязково break в душках
       }
+
+      //варіант 2
+      const isBigestNumber = (element) => element > comparativNumber
+      document.write(`варіант 2 = ${(arr.findLastIndex(isBigestNumber))}`)
    </script>
    </script>
 </body>
