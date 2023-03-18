@@ -12,15 +12,20 @@
 <body>
    <h1>5)Підрахувати кількість змін цін</h1>
    <script>
-      const arr = [1872, 5697, 127, 8714, 1790, 4675, 4512, 3314, 242, 3352, 7798, 474, 1167, 1771, 1720, 3551, 5213, 2720, 6885, 6780, 4234, 1819, 1191, 3952, 1119]
+      const arr = [1872, 5697, 127, 8714, 1790, 4675, 4512, 3314, 1872, 242, 3352, 7798, 474, 1167, 1771, 1720, 3551, 5213, 2720, 6885, 6780, 4234, 1819, 1191, 3952, 1119]
 
+      const startValue = arr[0] // знаходимо перший елемент
+      let counter = 0   //для підрахунку
       //для створення та порівняння підходить filter
       const changeVAlue = arr.filter(function (element, index, array) {
-         if (element !== array) //виконуємо перевірку першого елемента з наступними елем.
-            //  if(arr[0] !== array) //так теж працює
-            return array
+         if (startValue !== element) //виконуємо перевірку першого елемента з наступними елем.
+            counter++
+         return counter
       })
-      console.log(changeVAlue.length);
+      document.write(`${arr}<br>`)
+      document.write(`довжина массиву = ${arr.length}<br>`)
+      document.write(`кількість змін цін = ${counter}`)
+
    </script>
 </body>
 

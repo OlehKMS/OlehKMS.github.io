@@ -14,15 +14,32 @@
    </h1>
    <script>
       const arr = [1872, 5697, 127, 8714, 1790, 4675, 4512, 3314, 242, 3352, 7798, 474, 1167, 1771, 1720, 3551, 5213, 2720, 6885, 6780, 4234, 1819, 1191, 3952, 1119]
-      document.write(`1872, 5697, 127, 8714, 1790, 4675, 4512, 3314, 242, 3352, 7798, 474, 1167, 1771, 1720, 3551, 5213, 2720, 6885, 6780, 4234, 1819, 1191, 3952, 1119 <br>`)
-      //щоб створити новий масив перебравши маючи масив, підійде filter
+      document.write(`${arr}<br>`)
+     // щоб створити новий масив перебравши маючи масив, підійде filter
       const newArr = arr.filter(function (element, index) {
          if (element > 1000) {
-            document.write(index + ',')
-            return index
+            document.write(index + ',')//створити новий масив без елементів не вийде але можно вивести index
+            return index           
+
          }
       })
-      console.log(newArr);
+
+      let arrIndexMore_1000 = [] // пустий масив для додавання index
+      for (let i = 0; i < arr.length; i++) { // для перевірки всього масива підійде for
+         if(arr[i]>1000) // до умови має бути [i]
+         arrIndexMore_1000.push(i) // добавляємо index до масиву
+         
+      }
+      console.log(arrIndexMore_1000);
+      document.write(`<br>${arrIndexMore_1000}`)
+      
+    
+    
+      
+
+
+
+
 
 
    </script>
