@@ -20,7 +20,17 @@
          counterSum += element // нараховуємо
       }
       document.write(`${arr}<br>`)
-      document.write(`сума цін, що більше за 1000 = ${counterSum}`)
+      document.write(`сума цін, що більше за 1000 = ${counterSum}<br>`)
+      //варіант 2
+
+      const sumBiggest_1000 = arr.reduce((counterSum,num)=>
+      {
+         if(counterSum > comparativNumber)
+         return counterSum + num
+      })
+      console.log(sumBiggest_1000);
+      document.write(`варіант 2 = ${sumBiggest_1000}`)
    </script>
+   <h1>ЩОСЬ НЕ ТАК </h1>
 </body>
 </html>
