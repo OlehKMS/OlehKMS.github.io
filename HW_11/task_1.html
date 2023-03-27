@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../hw_10/style.css">
+   <title>Task 1-4</title>
+</head>
+
+<body>
+   <script>
+      let arr = []
+
+      for (let i = 0; i < 4; i++) {
+
+         arr[i] = [];
+         for (let j = 0; j < 4; j++) {
+            arr[i][j] = Math.floor(Math.random() * (99 - 1) + 1)
+         }
+      }
+      document.write(`${arr}`)
+
+      function summaArrElement(elementNumbers, nameArr) {
+         let sum = 0
+         for (let i = 0; i < nameArr.length; i++) {
+            sum += arr[i][elementNumbers]
+         }
+         return sum
+      }
+      document.write(`<br> Знайти суми елементів у вказаній області
+                     <br>${summaArrElement(0, arr)}`)
+      document.write(`<br>${summaArrElement(1, arr)}`)
+      document.write(`<br>${summaArrElement(2, arr)}`)
+      document.write(`<br>${summaArrElement(3, arr)}`)
+
+   </script>
+</body>
+
+</html>
