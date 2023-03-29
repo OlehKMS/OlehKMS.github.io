@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../hw_10/style.css">
+   <title>Task 1-4</title>
+</head>
+
+<body>
+   <h1>Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</h1>
+   <pre>
+      let arrProfit = [ [4183, 3797, 4749, 4758, 3103, 3407, 3456],
+                     [3229, 3998, 4724, 4603, 4023, 4514, 3452],
+                     [4849, 4904, 3556, 4265, 4662, 3492, 3807],
+                     [4480, 4742, 4712, 3289, 3731, 3346, 4185],
+                     [3992, 4046, 4348, 3215, 4562, 4822, 3266],
+                     [4024, 3387, 4083, 3717, 3029, 4237, 3915],
+                     [3244, 4110, 4667, 3608, 4584, 3473, 3949]]
+   </pre>
+
+
+   <script>
+
+      let arrProfit = [[4183, 3797, 4749, 4758, 3103, 3407, 3456],
+      [3229, 3998, 4724, 4603, 4023, 4514, 3452],
+      [4849, 4904, 3556, 4265, 4662, 3492, 3807],
+      [4480, 4742, 4712, 3289, 3731, 3346, 4185],
+      [3992, 4046, 4348, 3215, 4562, 4822, 3266],
+      [4024, 3387, 4083, 3717, 3029, 4237, 3915],
+      [3244, 4110, 4667, 3608, 4584, 3473, 3949]]
+
+      let arrProfitWeeks = []
+
+      for (let i = 0; i < arrProfit.length; i++) {
+         let sumProfitWeek = 0
+         for (let j = 0; j < arrProfit[i].length; j++) {
+            sumProfitWeek += arrProfit[i][j]
+
+
+         }
+         arrProfitWeeks.push(sumProfitWeek)
+
+      }
+      document.write(`<h2>1) загальний прибуток кожного масиву за тиждень;</h2>`)
+      console.dir(arrProfitWeeks)
+      document.write(`${arrProfitWeeks}`)
+      //---------------------------------------------------------------------------------------------
+      document.write(`<h2>2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);</h2>`)
+
+      let mondayProfit = 0
+      let tuesdayProfit = 0
+      let wednesdayProfit = 0
+      let thursdayProfit = 0
+      let fridayProfit = 0
+      let saturdayProfit = 0
+      let sundayProfit = 0
+
+      for (let i = 0; i < arrProfit.length; i++) {
+         mondayProfit += arrProfit[i][0]
+         tuesdayProfit += arrProfit[i][1]
+         wednesdayProfit += arrProfit[i][2]
+         thursdayProfit += arrProfit[i][3]
+         fridayProfit += arrProfit[i][4]
+         saturdayProfit += arrProfit[i][5]
+         sundayProfit += arrProfit[i][6]
+
+      }
+      document.write(`за понеділок = ${mondayProfit}; `)
+      document.write(`за вівторок = ${tuesdayProfit}; `)
+      document.write(`за середу = ${wednesdayProfit}; `)
+      document.write(`за четверг = ${thursdayProfit}; `)
+      document.write(`за пятницю = ${fridayProfit}; `)
+      document.write(`за суботу = ${saturdayProfit}; `)
+      document.write(`за неділю = ${sundayProfit}; `)
+
+
+
+      //----------------------------------------------------------------------
+
+      document.write(`<h2>3) загальний прибуток за робочі дні
+</h2>`)
+      let sumProfitWorkDays = []
+      let workingDays = 5
+
+      for (let i = 0; i < arrProfit.length; i++) {
+         let sum = 0
+         for (let j = 0; j < arrProfit[i].length; j++) {
+            if (j < workingDays)
+
+               sum += arrProfit[i][j]
+
+         }
+         sumProfitWorkDays.push(sum)
+
+      }
+      console.dir(sumProfitWorkDays)
+      document.write(`${sumProfitWorkDays}`)
+      //----------------------------------------------------------
+      document.write(`<h2>4) загальний прибуток за вихідні дні</h2>`)
+
+      let sumProfitWeekendDays = []
+      for (let i = 0; i < arrProfit.length; i++) {
+         let sum = 0
+         for (let j = 0; j < arrProfit[i].length; j++) {
+            if (j >= workingDays)
+               sum += arrProfit[i][j]
+
+
+         }
+         sumProfitWeekendDays.push(sum)
+
+      }
+      document.write(sumProfitWeekendDays)
+      //-----------------------------------------------------------------
+      document.write(`<h2>5) максимальний прибуток за середу</h2>`)
+      let maxWednesday = 0
+      for (let i = 0; i < arrProfit.length; i++) {
+         if (arrProfit[i][2] > maxWednesday)
+            maxWednesday = arrProfit[i][2]
+
+      } document.write(`${maxWednesday}`);
+      //---------------------------------------------------------------
+      document.write(`<h2>6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+</h2>`)
+
+      const newArrMore200 = arrProfit.flat().filter((element) => element > 200) // flat для преобразования в одномерный массив
+      console.dir(newArrMore200)
+      document.write(`${newArrMore200}`)
+      //=============================================================
+      document.write(`<h2>7) відсортувати кожен тиждень за зростанням</h2>`)
+
+      const sortedArrProfit = arrProfit.map((weeks) => {
+         return weeks.sort((a, b) => a - b);
+      });
+
+      console.dir(sortedArrProfit);
+
+      //--------------------------------------------------------------------
+      document.write(`<h2>8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+</h2>`)
+      arrProfit.sort((row1, row2) => {
+         let max1 = Math.max(...row1)
+         let max2 = Math.max(...row2)
+         return max2 - max1
+      }
+      )
+      const str = JSON.stringify(arrProfit)
+      document.write(`${str}`)
+
+      //=========================================
+      document.write(`<h2>9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).</h2>`)
+      const indexSumPairs = arrProfitWeeks.map((sum, index) => ([index, sum]))//знаходимо індекс кожної суми
+
+
+      //indexSumPairs.sort((a, b) => b.sum - a.sum)// сортируємо за спаданням знайдені суми але індекси не міняємо
+
+      const str2 = JSON.stringify(indexSumPairs)
+      document.write(`${str2}`)
+
+
+
+      console.log(indexSumPairs);
+
+      // let newArrProfit = []
+      // for (let i = 0; i < arrProfit.length; i++) {
+      //    for (let j = 0; j < arrProfit[i].length; j++) {
+      //       if(indexSumPairs[i][1] > )
+      //    }
+
+      // }
+      for (let i = 0; i < indexSumPairs.length - 1; i++) {
+         for (let j = i + 1; j < indexSumPairs.length; j++) {
+            if (indexSumPairs[j].sum > indexSumPairs[i].sum) {
+               const temp = indexSumPairs[i];
+               indexSumPairs[i] = indexSumPairs[j];
+               indexSumPairs[j] = temp;
+            }
+         }
+      }
+      const sortedWeeks = indexSumPairs.map(pair => arrProfit[pair.index])
+      console.log(sortedWeeks);
+
+   </script>
+</body>
+
+</html>
