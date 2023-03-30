@@ -140,7 +140,7 @@
 
       //--------------------------------------------------------------------
       document.write(`<h2>8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
-</h2>`)
+</h2>`)  //Розібрали на уроці
       arrProfit.sort((row1, row2) => {
          let max1 = Math.max(...row1)
          let max2 = Math.max(...row2)
@@ -152,36 +152,31 @@
 
       //=========================================
       document.write(`<h2>9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).</h2>`)
-      const indexSumPairs = arrProfitWeeks.map((sum, index) => ([index, sum]))//знаходимо індекс кожної суми
+      
+      
+      const indexSumPairs = arrProfitWeeks.map((sum, index) => ([index, sum])) // знаходимо індекс
+      indexSumPairs.sort((a, b) => b[1] - a[1])//сортируємо за спаданням
 
 
-      //indexSumPairs.sort((a, b) => b.sum - a.sum)// сортируємо за спаданням знайдені суми але індекси не міняємо
-
-      const str2 = JSON.stringify(indexSumPairs)
+      
+      for (let i = 0; i < indexSumPairs.length; i++) {
+         const temp = arrProfit[i] // зберігаємо елемент, третє відро
+         arrProfit[i] = arrProfit[indexSumPairs[i][0]] // заміеяємо елемент
+         arrProfit[indexSumPairs[i][0]] = temp // заміеяємо
+      }
+      const str2 = JSON.stringify(arrProfit)
       document.write(`${str2}`)
 
+      
 
 
-      console.log(indexSumPairs);
 
-      // let newArrProfit = []
-      // for (let i = 0; i < arrProfit.length; i++) {
-      //    for (let j = 0; j < arrProfit[i].length; j++) {
-      //       if(indexSumPairs[i][1] > )
-      //    }
 
-      // }
-      for (let i = 0; i < indexSumPairs.length - 1; i++) {
-         for (let j = i + 1; j < indexSumPairs.length; j++) {
-            if (indexSumPairs[j].sum > indexSumPairs[i].sum) {
-               const temp = indexSumPairs[i];
-               indexSumPairs[i] = indexSumPairs[j];
-               indexSumPairs[j] = temp;
-            }
-         }
-      }
-      const sortedWeeks = indexSumPairs.map(pair => arrProfit[pair.index])
-      console.log(sortedWeeks);
+
+
+
+
+
 
    </script>
 </body>
