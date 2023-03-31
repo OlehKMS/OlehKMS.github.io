@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,59 @@
    <link rel="stylesheet" href="../hw_10/style.css">
    <title>Battleship</title>
 </head>
+
 <body>
+   <h1>Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+      розташовується 5 кораблів. Користувач стріляє вказуючи координати
+      . Гра продовжується поки не потоплено усі кораблі або у користувача
+      не закінчаться снаряди.</h1>
+
    <script>
 
+      const field = Array.from({ length: 6 }, () => Array(6).fill(0));
+      const BattleshipArea = Array.from({ length: 6 }, () => Array(6).fill(0)) //двухмірний масив 6х6 заповненний 0
+      console.log(BattleshipArea)
+
+      //добавляємо кораблі
+      for (let i = 0; i < 5; i++) {
+         let x
+         let y
+         do {
+            x = Math.floor(Math.random() * 6)
+            y = Math.floor(Math.random() * 6)
+         }
+         while (field[x][y] !== 0) { //добавляємо кораблі на вільні місця
+            field[x][y] = 1
+         }
+         console.log(x)
+         console.log(y)
+
+      }
+      let hits = 0
+      while (hits < 5) {
+
+         let x = parseInt(prompt("Введіть номер строки (от 1 до 6)"))
+         let y = parseInt(prompt("Введіть номер стовбця (от 1 до 6)"))
+         if (field[x][y] === 1) { // якщо влучили
+            field[x][y] = -1
+            hits++
+            alert('Влучили')
+         }
+         else {
+            alert('Мимо')
+         }
+         console.log(hits);
+      }
+      if (hits === 5) {
+         alert('Перемога');
+      }
+
+
+
+
+
    </script>
-   
+
 </body>
+
 </html>
