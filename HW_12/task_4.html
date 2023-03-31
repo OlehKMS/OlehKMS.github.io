@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Task 4</title>
+</head>
+
+<body>
+   <h1>Задача 4. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних
+      таблиць.
+   </h1>
+   <section id="block_section">
+      <div id="block_bubble">
+         <h3>Сортування бульбашкою</h3>
+      </div>
+      <div id="block_shaker">
+         <h3>Сортування змішуванням</h3>
+      </div>
+      <div id="block_on">
+         <h3>Сортування включенням</h3>
+      </div>
+   </section>
+   <script>
+      //================Сортування бульбашкою======================
+      let arr = [1, 23, 11, 11, 21, 0, 20, 17, 2, 21, 24, 16, 11, 0, 6]
+      let b1 = document.getElementById('block_bubble')
+      let s1 = document.getElementById('block_shaker')
+      let on = document.getElementById('block_on')
+
+      let changed
+
+      do {
+         changed = false
+         for (let i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i]) {
+               let tmp = arr[i]
+               arr[i] = arr[i - 1]
+               arr[i - 1] = tmp
+               changed = true
+               // document.write(` ${document.getElementById("block_bubble").textContent =arr}`)
+               b1.insertAdjacentHTML('beforeend', `${arr}<br>`)
+
+
+            }
+         }
+
+      } while (changed)
+      //============================Сортування змішуванням============================
+
+      let arrShaker = [1, 23, 11, 11, 21, 0, 20, 17, 2, 21, 24, 16, 11, 0, 6]
+      let leftIndex = 0
+      let rightIndex = arrShaker.length - 1
+
+      while (leftIndex < rightIndex) {
+         for (let i = leftIndex; i < rightIndex; i++) {
+            if (arrShaker[i] > arrShaker[i + 1]) {
+               const temp = arrShaker[i]
+               arrShaker[i] = arrShaker[i + 1]
+               arrShaker[i + 1] = temp
+               
+            }
+         }
+         rightIndex--;
+         s1.insertAdjacentHTML('beforeend', `${arrShaker}<br>`)
+         for (let i = rightIndex; i > leftIndex; i--) {
+            if (arrShaker[i] < arrShaker[i - 1]) {
+               const temp = arrShaker[i]
+               arrShaker[i] = arrShaker[i - 1]
+               arrShaker[i - 1] = temp
+               
+            }
+         }
+         leftIndex++;
+         s1.insertAdjacentHTML('beforeend', `${arrShaker}<br>`)
+      }
+      
+      //===================================Сортування включенням=====================
+
+      let arrOn = [1, 23, 11, 11, 21, 0, 20, 17, 2, 21, 24, 16, 11, 0, 6]
+      let changed2
+      // do {
+      //    changed2 = false
+      //    for (let i = 1; i < arr3.length; i++) {
+      //       if (arr3[i - 1] > arr3[i]) {
+      //          let tmp = arr3[i]
+      //          arr3[i] = arr3[i - 1]
+      //          arr3[i - 1] = tmp
+      //          changed = true
+      //          on.insertAdjacentHTML('beforeend', `${arr3}<br>`)
+      //       }
+      //    }
+      // } while (changed2)
+      do {
+         changed2 = false
+         for (let i = 1; i < arrOn.length; i++) {
+            if (arrOn[i - 1] > arrOn[i]) {
+               let tmp = arrOn[i]
+               arrOn[i] = arrOn[i - 1]
+               arrOn[i - 1] = tmp
+               changed2 = true
+               on.insertAdjacentHTML('beforeend', `${arrOn}<br>`)
+            }
+         }
+      } while (changed2)
+      console.log(arrOn);
+      
+
+   </script>
+
+</body>
+
+</html>

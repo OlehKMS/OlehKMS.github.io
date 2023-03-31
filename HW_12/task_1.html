@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../style.css">
-   <title>Задача 1</title>
+   <title>Task 1</title>
 </head>
+
 <body>
-   <script></script>
+   <h1>Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою</h1>
+   <script>
+      let arr = [10, 25, 22, 86, 12, 8, 35, 94, 48, 91, 27, 16, 87, 21, 18, 22, 87, 84, 7, 93, 72, 90, 36, 36, 66, 83, 46, 30, 35, 32]
+
+      // for (let i = 0; i < 30; i++) {
+      //    let random = Math.floor(Math.random() * (99 - 1) + 1)
+      //    arr.push(random)
+
+      // }
+        
+        document.write(`<br>[10, 25, 22, 86, 12, 8, 35, 94, 48, 91, 27, 16, 87, 21, 18, 22, 87, 84, 7, 93, 72, 90, 36, 36, 66, 83, 46, 30, 35, 32]`)
+        
+      let changed
+      let counter = 0 
+      do {
+         changed = false
+         for (let i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i]) {
+               let tmp = arr[i]
+               arr[i] = arr[i - 1]
+               arr[i - 1] = tmp
+               changed = true
+               counter++
+            }
+         }
+      } while (changed)
+      console.log(counter);
+      let str = JSON.stringify(arr)
+      document.write(`<br>${str}`)
+      document.write(`<br>було ${counter} обмінів під час сортування бульбашкою`)
+
+   </script>
 </body>
+
 </html>

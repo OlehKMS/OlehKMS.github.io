@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Task 2</title>
+</head>
+
+<body>
+   <h1>Задача 2. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+   </h1>
+   <script>
+      let arr343 = [78, 9, 97, 47, 9, 7, 54, 33, 3, 51, 92, 52, 59, 6, 86, 92, 21, 16, 55, 85, 46, 46, 24, 25, 33, 6, 73, 52, 37, 3]
+
+      let str = JSON.stringify(arr343)
+      document.write(`${str}`)
+            
+      let counter = 0
+      let leftIndex = 0
+      let rightIndex = arr343.length - 1
+
+      while (leftIndex < rightIndex) {
+         for (let i = leftIndex; i < rightIndex; i++) {
+            if (arr343[i] > arr343[i + 1]) {
+               const temp = arr343[i]
+               arr343[i] = arr343[i + 1]
+               arr343[i + 1] = temp
+               counter++
+
+            }
+         }
+         rightIndex--;
+
+         for (let i = rightIndex; i > leftIndex; i--) {
+            if (arr343[i] < arr343[i - 1]) {
+               const temp = arr343[i]
+               arr343[i] = arr343[i - 1]
+               arr343[i - 1] = temp
+               counter++
+
+            }
+         }
+         leftIndex++;
+      }
+      document.write(`<br><h2>під час сортування змішуванням було ${counter} обмінів </h2>`)
+      document.write(`<br>${arr343}`)
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Task 3</title>
+</head>
+
+<body>
+   <h1>Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+   </h1>
+   <p>15, 61, 33, 59, 58, 72, 76, 64, 11, 39, 4, 22, 72, 11, 75, 19, 93, 69, 3, 22, 17, 13, 19, 25, 90, 95, 76, 65, 7,
+      46</p>
+   <script>
+      let arrayNumbers = [15, 61, 33, 59, 58, 72, 76, 64, 11, 39, 4, 22, 72, 11, 75, 19, 93, 69, 3, 22, 17, 13, 19, 25, 90, 95, 76, 65, 7, 46]
+
+      let counter = 0
+
+      let changed
+      do {
+         changed = false
+         for (let i = 1; i < arrayNumbers.length; i++) {
+            if (arrayNumbers[i - 1] > arrayNumbers[i]) {
+               let tmp = arrayNumbers[i]
+               arrayNumbers[i] = arrayNumbers[i - 1]
+               arrayNumbers[i - 1] = tmp
+               changed = true
+               counter++
+            }
+         }
+      } while (changed)
+
+
+
+      document.write(`<h2>було ${counter} обмінів під час сортування включеннями</h2>`)
+
+      let str = JSON.stringify(arrayNumbers)
+      document.write(`<br>${str}`)
+   </script>
+</body>
+
+</html>
