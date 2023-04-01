@@ -12,44 +12,41 @@
 <body>
    <h1>Задача 5. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я
       «Olga» і під яким індексом.</h1>
+      ["Anna", "Olga", "Max", "Igor", "Kate", "Vlad", "Lena", "Oksana", "Ira"]
    <script>
-      const names = ["Anna", "Olga", "Max", "Igor", "Kate", "Vlad", "Lena", "Oksana", "Ira"];
-
-      names.sort()
-
-
-
-      function binarySearch(arr) {
-         let start = 0
-         let end = arr.length - 1
-         while (start <= end) {
-            const middle = Math.floor((start + end) / 2)
-            if (arr[middle] === "Olga") return true
-            else if(arr[middle] < "Olga") start = middle+1
-            else if (arr[middle] > "Olga") end = middle -1
+      const names = ["Anna", "Olga", "Max", "Igor", "Kate", "Vlad", "Lena", "Oksana", "Ira"]
+      //================сортування бульбашкою===========
+      for (let i = 0; i < names.length - 1; i++) {
+         for (let j = 0; j < names.length - i - 1; j++) {
+            if (names[j] > names[j + 1]) {
+               let temp = names[j];
+               names[j] = names[j + 1];
+               names[j + 1] = temp;
+            }
          }
-         return false
       }
-console.log(binarySearch(names));
+      document.write(`<br>сортування бульбашкою <br> ${names}`)
+      console.log(names);
+      //============Бінарним пошуком, знаходимо індекс==============
+      let start = 0
+      let end = names.length - 1
+      let findIndex = -1
 
-// while (left <= right) {
-//   let middle = Math.floor((left + right) / 2);
-//   if (names[middle] === "Olga") {
-//     foundIndex = middle;
-//     break;
-//   } else if (names[middle] < "Olga") {
-//     left = middle + 1;
-//   } else {
-//     right = middle - 1;
-//   }
-// }
+      while (start <= end) {
+         let middle = Math.floor((start + end) / 2)
+         if (names[middle] === "Olga") {
+            findIndex = middle
+            break
+         } else if (names[middle] < "Olga") {
+            start = middle + 1
+         } else {
+            end = middle - 1
+         }
+      }
+      document.write(`<br>Olga під індексом: ${findIndex}`)
+      
 
-// // Вывод результата
-// if (foundIndex === -1) {
-//   console.log("Элемент не найден в массиве");
-// } else {
-//   console.log(`Индекс элемента "Olga" в массиве: ${foundIndex}`);
-// }
+
 
    </script>
 </body>
