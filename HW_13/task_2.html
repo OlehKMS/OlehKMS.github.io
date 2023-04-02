@@ -13,7 +13,30 @@
    <h1>Задача 2</h1>
 
    <script>
+      //============ Рекрусивний підхід ============
+      let findN = parseInt(prompt(`Введіть значення "n"`))
+      function findX_n(n) {
+         if (n < 2)
+            return 1
+         else return findX_n(n - 1) + 2 * findX_n(n - 2)
 
+      }
+      document.write(`Рекрусивний підхід = ${findX_n(findN)}<br>`)
+
+      //================ нерекурсивний підхід ===============
+
+      function notRekursivFindX_n(n) {
+         let xPrevPrev = 1
+         let xPrev = 1
+         let xCurrent = 1
+         for (let i = 2; i <= n; i++) {
+            xCurrent = xPrev + 2 * xPrevPrev
+            xPrevPrev = xPrev
+            xPrev = xCurrent
+         }
+         return xCurrent
+      }
+      document.write(`нерекрусивний підхід = ${notRekursivFindX_n(findN)}`)
    </script>
 
 </body>

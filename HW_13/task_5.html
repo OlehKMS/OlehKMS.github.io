@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Task 5</title>
+</head>
+
+<body>
+   <h1>Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і
+      робиться перевірка.</h1>
+
+   <script>
+
+      function simulatorAddition() {
+         setTimeout(() => {
+            const randomNum = Math.floor(Math.random() * (9))
+            const randomNum2 = Math.floor(Math.random() * (9))
+            const correctAnswer = randomNum + randomNum2
+            const userAnswer = parseInt(prompt(`Скільки буде ${randomNum} + ${randomNum2}`))
+            
+            if (userAnswer === correctAnswer) {
+               alert('Good')
+               return simulatorAddition()
+            }
+            else {
+               alert(`невірно, правильна відповідь = ${correctAnswer}`)
+               return simulatorAddition()
+            }
+         }, 10000)
+      }
+      simulatorAddition()
+   </script>
+
+</body>
+
+</html>
