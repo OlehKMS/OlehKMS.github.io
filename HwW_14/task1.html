@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 1</title>
+</head>
+
+<body>
+   <h1>Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями</h1>
+   <h2>----- Властивості ------
+   </h2>
+   <ol class="text_start">
+      <li>назва компанії на час розробки (назву періодично змінюють)</li>
+      <li>- власник компанії</li>
+      <li>- споснсори (масив спонсорів)
+         <ol>
+            <li>
+               * прізвище спонсора
+            </li>
+            <li>* ім’я спонсора
+            </li>
+            <li>
+               * сума вкладень спонсора
+            </li>
+         </ol>
+      </li>
+      <li> - рік випуску</li>
+      <li>- вартість сайту</li>
+   </ol>
+   <script>
+      const websaitesArr = [
+         {
+            name: "ABC Inc.",
+            owner: "John Smith",
+            sponsors: [
+               {
+                  lastName: "Johnson",
+                  firstName: "Robert",
+                  investment: 10000,
+               },
+               {
+                  lastName: "Davis",
+                  firstName: "Sarah",
+                  investment: 15000,
+               },
+            ],
+            yearReleased: 2010,
+            websiteCost: 5000,
+         },
+         {
+            name: "XYZ Corp.",
+            owner: "Jane Doe",
+            sponsors: [
+               {
+                  lastName: "Lee",
+                  firstName: "Michael",
+                  investment: 20000,
+               },
+               {
+                  lastName: "Williams",
+                  firstName: "Emily",
+                  investment: 12000,
+               },
+            ],
+            yearReleased: 2015,
+            websiteCost: 8000,
+         },
+         {
+            name: "DEF LLC",
+            owner: "David Johnson",
+            sponsors: [
+               {
+                  lastName: "Garcia",
+                  firstName: "Juan",
+                  investment: 25000,
+               },
+               {
+                  lastName: "Thompson",
+                  firstName: "Lisa",
+                  investment: 18000,
+               },
+            ],
+            yearReleased: 2012,
+            websiteCost: 7000,
+         },
+         {
+            name: "MNO Corp.",
+            owner: "Alex Rodriguez",
+            sponsors: [
+               {
+                  lastName: "Hernandez",
+                  firstName: "Maria",
+                  investment: 30000,
+               },
+               {
+                  lastName: "Nguyen",
+                  firstName: "Tom",
+                  investment: 10000,
+               },
+            ],
+            yearReleased: 2017,
+            websiteCost: 10000,
+         },
+         {
+            name: "PQR Ltd.",
+            owner: "Samantha Brown",
+            sponsors: [
+               {
+                  lastName: "Gonzalez",
+                  firstName: "Jose",
+                  investment: 15000,
+               },
+               {
+                  lastName: "Wang",
+                  firstName: "Linda",
+                  investment: 22000,
+               },
+            ],
+            yearReleased: 2013,
+            websiteCost: 6000,
+         },
+         {
+            name: "UVW Inc.",
+            owner: "Robert Black",
+            sponsors: [
+               {
+                  lastName: "Jackson",
+                  firstName: "Chris",
+                  investment: 18000,
+               },
+               {
+                  lastName: "Miller",
+                  firstName: "Kim",
+                  investment: 13000,
+               },
+            ],
+            yearReleased: 2016,
+            websiteCost: 9000,
+         },
+         {
+            name: "STU LLC",
+            owner: "Elizabeth Green",
+            sponsors: [
+               {
+                  lastName: "Taylor",
+                  firstName: "James",
+                  investment: 22000,
+               },
+               {
+                  lastName: "Anderson",
+                  firstName: "Karen",
+                  investment: 119000,
+               },
+            ],
+            yearReleased: 2001,
+            websiteCost: 6500,
+         }
+      ]
+
+      const totalPriceWebsaites = websaitesArr.reduce((prevSum, saiteName) => prevSum + saiteName.websiteCost, 0)
+
+      document.write(`<h3>
+1) загальна вартість усіх сайтів = ${totalPriceWebsaites}
+</h3>`)
+
+      const saitestsYearReleasedBetween2000after2009 = websaitesArr.reduce((prevNum, saite) => (saite.yearReleased >= 2000 && saite.yearReleased <= 2009 ? prevNum + 1 : prevNum), 0)
+      document.write(`<h3>
+2) кількість сайтів, що було зроблено між 2000 та 2009 рр = ${saitestsYearReleasedBetween2000after2009}
+</h3>`)
+
+      const investmentMore100k = websaitesArr.reduce((counter, currentValue) => {
+         currentValue.sponsors.forEach((sponsor) => {
+            if (sponsor.investment > 100000)
+               counter++
+         })
+         return counter
+      }, 0)
+
+      document.write(`<h3>
+   3)кількість сайтів, де сума спонсорських вкладень була більшою за 100000 = ${investmentMore100k}
+</h3>`)
+
+      const sponsorsNames = websaitesArr.reduce((names, website) => {
+         const websiteSponsorNames = website.sponsors.map(sponsor => `${sponsor.firstName} ${sponsor.lastName}`);
+         return names.concat(websiteSponsorNames);
+      }, [])
+
+      document.write(`<h3>4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</h3><br>${sponsorsNames}`)
+
+      const maxWebsiteCostObj = websaitesArr.reduce((acc, cur) => (
+         cur.websiteCost > acc.websiteCost ? cur : acc)
+         , { websiteCost: 0 })
+
+      const maxYearReleased = maxWebsiteCostObj.yearReleased
+      document.write(`<h3>5) знайти рік, коли прибуток був найбільшим</h3> ${maxYearReleased}`)
+
+      const sortWebSaiteCost = websaitesArr.sort((a, b) => b.websiteCost - a.websiteCost);
+      
+      let stringSortWebSaiteCost = JSON.stringify(sortWebSaiteCost)
+      document.write(`<h3>6) упорядкувати список за спаданням прибутку</h3>${stringSortWebSaiteCost}`)
+
+      const priceMore_10000 = websaitesArr.filter(site => site.websiteCost > 10000)
+      
+      const priceLess_10000 = websaitesArr.filter(site => site.websiteCost < 10000)
+      const stringPriceLess_10000 = JSON.stringify(priceLess_10000)
+      document.write(`<h3>7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</h3>${stringPriceLess_10000}`)
+
+
+
+   </script>
+</body>
+
+</html>

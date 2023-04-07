@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Task 2</title>
+</head>
+
+<body>
+   <h1>Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N
+      місяців.</h1>
+
+
+   <script>
+      // const userDay = parseInt(prompt(`який день?`))
+      // const userMonth = parseInt(prompt(`якій місяц?`))
+      // const userYear = parseInt(prompt(`який рік`))
+      // const addNumberOfMonth = parseInt(prompt(`скільки додати місяців`))
+
+      // function getYearAfterMonths( month, year, n) {
+      //    console.log(month);
+      //    const date = new Date(year, month - 1,);
+      //    console.log(month);
+      //    date.setMonth(date.getMonth() + parseInt(n));
+      //    console.log(month);
+      //    return date.getFullYear();
+      // }
+      // document.write(`${getYearAfterMonths(userMonth,userYear,addNumberOfMonth)}`)
+
+
+      let userDate = {
+         day: 23,
+         month: 1,
+         year: 2023,
+      }
+
+      function getyears({ month }, n) {
+         let months = (month - 1) + n
+         let years = Math.floor(months / 12)
+         let remainingMonths = months % 12
+         let newYear = userDate.year + years
+         console.log(newYear + remainingMonths)
+         if (remainingMonths === 0) {
+            return newYear
+         } else if ((remainingMonths + month) % 12 === 0) {
+            return newYear + Math.floor(remainingMonths / 12)
+         } else {
+            return newYear + Math.floor(remainingMonths / 12) + 1
+
+         }
+      }
+
+      n = parseInt(prompt(`скільки додати місяців`))
+      document.write(`${getyears(userDate, n)}`)
+
+
+
+   </script>
+</body>
+
+</html>
