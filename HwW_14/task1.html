@@ -199,13 +199,13 @@
       document.write(`<h3>5) знайти рік, коли прибуток був найбільшим</h3> ${maxYearReleased}`)
 
       const sortWebSaiteCost = websaitesArr.sort((a, b) => b.websiteCost - a.websiteCost);
-      
+
       let stringSortWebSaiteCost = JSON.stringify(sortWebSaiteCost)
       document.write(`<h3>6) упорядкувати список за спаданням прибутку</h3>${stringSortWebSaiteCost}`)
 
-      const priceMore_10000 = websaitesArr.filter(site => site.websiteCost > 10000)
-      
-      const priceLess_10000 = websaitesArr.filter(site => site.websiteCost < 10000)
+      const priceMore_10000 = websaitesArr.filter(site => site.websiteCost > 10000).map(item => ({ ...item }))
+
+      const priceLess_10000 = websaitesArr.filter(site => site.websiteCost < 10000).map(item => ({ ...item }))
       const stringPriceLess_10000 = JSON.stringify(priceLess_10000)
       document.write(`<h3>7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</h3>${stringPriceLess_10000}`)
 
