@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>«Керівник танців»</title>
+</head>
+
+<body>
+   <h1>Розробити клас «Керівник танців»</h1>
+   <script>
+      class DanceManager {
+         constructor(boysNames, girlsNames) {
+            this.boysNames = boysNames
+            this.girlsNames = girlsNames
+         }
+
+         getRandomBoyName() {
+            return this.boysNames[Math.floor(Math.random() * this.boysNames.length)] //Метод випадкового вибору імені хлопця
+         }
+
+         getRandomGirlName() {
+            return this.girlsNames[Math.floor(Math.random() * this.girlsNames.length)]//Метод випадкового вибору імені дівчини
+         }
+         //=================================Метод виведення пари для танців=================
+         getDancePair() {
+            const boyName = this.getRandomBoyName();
+            const girlName = this.getRandomGirlName();
+            return [boyName, girlName];
+         }
+         //=================================Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців====================
+         run() {
+            setInterval(() => {
+               const [boyName, girlName] = this.getDancePair()
+               document.write(`${boyName} танцює з ${girlName}, `);
+               // document.write(`${this.getRandomBoyName()} танцює з ${this.getRandomGirlName()}, `)
+            }, 5000)
+         }
+      }
+      const boysNames = ["Олег", "Ігор", "Василь", "Юрій"] //Масив імен хлопців
+      const girlsNames = ["Оксана", "Ірина", "Василіса", "Наталія"] //Масив імен дівчат
+
+      const danceManager = new DanceManager(boysNames, girlsNames)
+      danceManager.run()
+
+
+   </script>
+</body>
+
+</html>

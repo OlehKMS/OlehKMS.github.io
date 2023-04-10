@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Auto</title>
+</head>
+
+<body>
+   <h1>Задача 2. Створити об’єкт «Авто».
+   </h1>
+   <script>
+      const car = {
+         mark: "Toyota",
+         tankSize: 50,
+         fuelLevel: 20,
+         numberOfSeats: 5,
+         numberOfPassengers: 1,
+         refuel: function (liters) {
+            if (liters <= 0) {
+               console.log("Бак порожній");
+               return;
+            }
+            if (this.fuelLevel + liters > this.tankSize) {
+               console.log("Бак повний");
+               this.fuelLevel = this.tankSize;
+            } else {
+               this.fuelLevel += liters;
+            }
+            console.log(`Бак зараз містить ${this.fuelLevel}/${this.tankSize}`);
+         },
+         addPassengers: function (number) {
+            if (this.numberOfPassengers + number > this.numberOfSeats) {
+               console.log("Недостатньо місць");
+               this.numberOfPassengers = this.numberOfSeats;
+            } else {
+               this.numberOfPassengers += number;
+            }
+            console.log(`Кількість пасажирів зараз ${this.numberOfPassengers}/${this.numberOfSeats}`);
+         },
+         removePassengers: function (number) {
+            if (this.numberOfPassengers - number < 0) {
+               console.log("Кількість пасажирів не може бути від'ємною");
+               this.numberOfPassengers = 0;
+            } else {
+               this.numberOfPassengers -= number;
+            }
+            console.log(`Кількість пасажирів зараз ${this.numberOfPassengers}/${this.numberOfSeats}`);
+         },
+         showPassengers: function () {
+            console.log(`Кількість пасажирів ${this.numberOfPassengers}`);
+         }
+      }
+      car.showPassengers(3)
+      car.addPassengers(3)
+      car.removePassengers(2)
+      car.refuel(30)
+
+
+   </script>
+</body>
+
+</html>

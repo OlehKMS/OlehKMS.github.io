@@ -20,18 +20,16 @@
       function createIterator(min, max) {
          let current = min
          return function () {
-            const result = current
-            current++
             if (current > max) {
                current = min
             }
-            return result
+            return current++
          }
       }
-      
+
       for (let i = 0; i < months.length; i++) {
          const month = months[i]
-         
+
          let daysInMonth = 31
          if (month === 'February') {
             daysInMonth = 28
@@ -41,9 +39,9 @@
          document.write(`${month}=${daysInMonth}днів  <br>`)
       }
       createIterator(1, 31)
-      
-      
-      </script>
+
+
+   </script>
 </body>
 
 </html>

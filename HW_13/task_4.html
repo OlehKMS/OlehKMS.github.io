@@ -25,14 +25,14 @@
          }
       }
 
-      function guessWord() {
-         const randomIndex = Math.floor(Math.random() * ukrainianWords.length)
+      function guessWord(arrayUkr,arrayEng) {
+         const randomIndex = Math.floor(Math.random() * arrayUkr.length)
 
-         const englishWord = englishWords[randomIndex]// щоб вивести довжину слова
+         const englishWord = arrayEng[randomIndex]// щоб вивести довжину слова
          const letterGen = letterIterator(englishWord)
          let correctLetters = 0
 
-         const userAnswer = prompt(`Як буде англійською "${ukrainianWords[randomIndex]}"?`)
+         const userAnswer = prompt(`Як буде англійською "${arrayUkr[randomIndex]}"?`)
          for (let i = 0; i < englishWord.length; i++) {
             const letter = userAnswer[i]
             if (letter === letterGen()) {
@@ -43,7 +43,7 @@
          alert(`Кількість вгаданих букв: ${correctLetters} Правильна відровідь "${englishWords[randomIndex]}"`)
       }
 
-      guessWord()
+      guessWord(ukrainianWords,englishWords)
 
    </script>
 </body>

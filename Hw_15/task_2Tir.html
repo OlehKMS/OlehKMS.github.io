@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Тир</title>
+</head>
+
+<body>
+   <h1>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+   </h1>
+   <pre>         [1, 0, 1]
+         [0, 1, 0]
+         [1, 0, 0]</pre>
+   <script>
+      const Tir = {
+         whereRabbits: [
+            [1, 0, 1],
+            [0, 1, 0],
+            [1, 0, 0]
+         ],
+         shoots: function (x, y) {
+            if (this.whereRabbits[x][y] === 1) {
+               alert("Заєць вбитий!");
+               this.whereRabbits[x][y] = 0
+            } else {
+               alert("Промах!")
+            }
+         },
+
+      }
+      let x = parseFloat(prompt('Введите координати x від 0 до 2'))
+      let y = parseFloat(prompt('Введите координати y від 0 до 2'))
+      Tir.shoots(x, y)
+
+   </script>
+</body>
+
+</html>

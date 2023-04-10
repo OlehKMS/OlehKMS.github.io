@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 3</title>
+</head>
+
+<body>
+   <h1>Задача 3. Розробити клас MultChecker для перевірки таблиці множення</h1>
+   <script>
+      class MultChecker {
+         constructor(number) {
+            this.number = number// щоб не тримати в голові
+            this.correctAnswers = 0
+            this.incorrectAnswers = 0
+         }
+
+         generateQuestion() {
+            const secondNumber = Math.floor(Math.random() * 10) + 1;// Генеруємо випадкове друге число від 1 до 10
+            document.write(`Скільки буде ${this.number} * ${secondNumber}?<br>`)
+            return this.number * secondNumber // Повертаємо правильну відповідь
+         }
+
+         checkAnswer(answer) {
+            const result = this.generateQuestion() // Генеруємо новий приклад і зберігаємо правильну відповідь
+            if (answer === result) {
+               document.write(`Відповідь ${result} вірна!<br>`)
+               this.correctAnswers++
+            } else {
+               document.write(`Відповідь ${answer} невірна! Правильна відповідь: ${result}<br>`)
+               this.incorrectAnswers++
+            }
+         }
+
+         render() {
+            document.write(`Перевірка таблиці множення на ${this.number}<br>`)
+            document.write(`Кількість правильних відповідей: ${this.correctAnswers}<br>`)
+            document.write(`Кількість неправильних відповідей: ${this.incorrectAnswers}<br>`)
+         }
+      }
+      const mult7 = new MultChecker(7)
+      mult7.checkAnswer(Math.floor(Math.random() * 10 + 1) * 7) //(MultChecker.secondNumber(), 28)//(MultChecker.generateQuestion,{secondNumber}); // Відповідь вірна!
+
+      mult7.render()
+   </script>
+</body>
+
+</html>

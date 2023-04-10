@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Розробити клас Baner</title>
+</head>
+
+<body>
+   <!-- <img src="../img/red-yellow-flower.jpg" alt=""> -->
+   <h1>Задача 4. Розробити клас Baner</h1>
+   <div id="banner"></div>
+   <script>
+      class Banner {
+         constructor(images) {
+            this.images = images
+         }
+
+         getRandomImage() {
+            return this.images[Math.floor(Math.random() * this.images.length)]
+         }
+
+         render() {
+            const randomImage = this.getRandomImage();
+            const bannerElement = document.getElementById("banner");
+            bannerElement.innerHTML = `<a href="${randomImage.link}"><img src="${randomImage.image}" alt="${randomImage.alt}"></a>`;
+         }
+      }
+
+
+      const images  = [
+         {
+            image: "../img/img-1rertawegt.jpg",
+            link: "https://novoetv.kz/wp-content/uploads/2021/04/img-1rertawegt.jpg",
+         },
+         {
+            image: "../img/red-yellow-flower.jpg",
+            link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_Rw7mPUniE7gqObCvZS4wWZAeU9rx2Kp9lw&usqp=CAU",
+         },
+         
+      ]
+
+      const banner = new Banner(images)
+
+      banner.render()
+
+   </script>
+</body>
+
+</html>
