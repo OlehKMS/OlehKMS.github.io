@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 4</title>
+</head>
+
+<body>
+   <h1> Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр
+      кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які
+      може видати банкомат, та метод зняття деякої суми.</h1>
+   <script>
+      class TBankomat {
+         constructor() {
+
+            this.banknotes = {
+               5: 10,
+               10: 20,
+               20: 30,
+               50: 40,
+               100: 50,
+               200: 60
+            }
+         }
+
+         // метод знаходження максимальної суми, яку може видати банкомат
+         getMaxSum() {
+            let maxSum = 0;
+            for (let denomination in this.banknotes) {
+               maxSum += denomination * this.banknotes[denomination];
+            }
+            return maxSum;
+         }
+
+         // метод знаходження мінімальної суми, яку може видати банкомат
+         getMinSum() {
+            let minDenomination = Math.min(...Object.keys(this.banknotes));
+            return minDenomination * this.banknotes[minDenomination];
+         }
+
+         // метод зняття деякої суми з банкомату
+         withdraw(sum) {
+            // перевіряємо, чи може банкомат видати дану суму
+            if (sum > this.getMaxSum()) {
+               console.log('Банкомат не може видати дану суму');
+               return;
+            }
+
+            // створюємо копію об'єкту з кількістю купюр
+            let banknotesCopy = Object.assign({}, this.banknotes);
+
+            // формуємо масив з номіналами купюр в порядку спадання
+            let denominations = Object.keys(this.banknotes).sort((a, b) => b - a);
+
+            // проходимо по кожному номіналу та визначаємо кількість купюр,
+            // необхідних для видання даної суми
+            let requiredBanknotes = {};
+            let remainingSum = sum;
+            for (let denomination of denominations) {
+               let banknotesCount = Math.floor(remainingSum / denomination);
+               if (banknotesCount > banknotesCopy[denomination]) {
+                  banknotesCount = banknotesCopy[denomination];
+               }
+               requiredBanknotes[denomination] = banknotesCount;
+               remainingSum -= banknotesCount * denomination;
+            }
+
+            // якщо суму не вдалось видати повністю,
+            // виводимо повідомлення та повертаємо false
+            if (remainingSum > 0) {
+               console.log('Банкомат не може видати дану суму');
+               return false;
+            }
+
+            // зменшуємо кількість купюр у банкоматі
+            for (let denomination in requiredBanknotes) {
+               banknotesCopy[denomination] -= requiredBanknotes[denomination];
+            }
+
+            // оновлюємо кількість купюр у банкоматі
+            this.banknotes = banknotesCopy
+         }
+      }
+      const bankomat = new TBankomat(2200)
+      console.log(bankomat.withdraw())
+      console.log(bankomat.getMinSum())
+      console.log(bankomat.withdraw())
+   </script>
+
+</body>
+
+</html>

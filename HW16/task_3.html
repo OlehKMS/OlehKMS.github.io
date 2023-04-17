@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta nameFirma="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 3</title>
+</head>
+
+<body>
+   <h1>Задача 3. Об’єкт “Фірма” (використати члени-класи)</h1>
+   <script>
+      class Firm {
+         constructor(nameFirma, dateOfFoundation, services, adressOfBranches) {
+            this.nameFirma = nameFirma
+            this.dateOfFoundation = new Date(dateOfFoundation)
+            this.services = services
+            this.adressOfBranches = adressOfBranches
+         }
+
+         getAge() { //визначення кількості років існування фірми
+            const today = new Date()
+            const currentYear = today.getFullYear()
+            const dateFoundationYear = this.dateOfFoundation.getFullYear()
+            const age = currentYear - dateFoundationYear
+
+            return age
+         }
+
+         getBranchesInCity(city) { //виведення всіх філіалів фірми у вказаному місті;
+            const filteredBranches = this.adressOfBranches.filter(
+               branch => branch.city === city
+            );
+            return filteredBranches
+         }
+         //виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу
+         getServicesByPriceAndDuration(price, duration) {
+            const filteredServices = this.services.filter(
+               service => service.price <= price && service.duration <= duration
+            )
+            return filteredServices
+         }
+      }
+
+
+
+      const services = [
+         { nameFirma: "Уборка", price: 200, duration: 3 },
+         { nameFirma: "Ремонт", price: 500, duration: 7 },
+         { nameFirma: "HEDA", price: 100, duration: 1 },
+      ]
+
+      const adressOfBranches = [
+         { country: "Украина", city: "Киев", street: "ул. Шевченко", houseNumber: 10 },
+         { country: "Украина", city: "Одесса", street: "ул. Дерибасовская", houseNumber: 5 },
+         { country: "Австрія", city: "Salzburg", street: "Plainstraße  5020", houseNumber: 34 },
+      ]
+
+      const firm = new Firm("Наша фирма", "2020-01-01", services, adressOfBranches)
+
+      console.log(firm.getAge())
+      console.log(firm.getBranchesInCity("Киев"))
+      console.log(firm.getServicesByPriceAndDuration(300, 4))
+
+   </script>
+</body>
+
+</html>

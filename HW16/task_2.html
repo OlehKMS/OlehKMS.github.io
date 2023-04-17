@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 2</title>
+</head>
+
+<body>
+   <h1>Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту.
+      Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу
+      долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+   </h1>
+   <script>
+      class TMoney {
+         constructor(summDollar, dollarExchange) {
+            this.summDollar = summDollar //сума у доларах
+            this.dollarExchange = dollarExchange // курс долара
+         }
+         add(summDollar) {
+            this.summDollar += summDollar / this.dollarExchange
+         }
+
+
+         subtract(summDollar) { //віднімає передану суму від поточної
+            this.summDollar -= summDollar / this.dollarExchange
+         }
+
+         toString() { //повертає рядок
+            return `${this.summDollar.toFixed(2)} USD`
+         }
+         setRate(rate) {
+            this.rate = rate
+         }
+         addAmountInUAH(amountInUAH) {
+            const currentAmountInUSD = this.dollarExchange / this.summDollar
+            const deltaRate = 100 / currentAmountInUSD
+            const newRate = this.summDollar + deltaRate
+            this.setRate(newRate)
+            const newAmountInUAH = (this.dollarExchange + amountInUAH) * newRate
+            this.dollarExchange += amountInUAH / newRate
+            return newAmountInUAH
+         }
+      }
+      const money = new TMoney(100, 5)
+      money.add(1000)
+      console.log(money.toString())
+      money.subtract(500);
+      console.log(money.toString())
+      const newAmountInUAH = money.addAmountInUAH(100)
+      document.write(`${newAmountInUAH}`)
+   </script>
+</body>
+
+</html>

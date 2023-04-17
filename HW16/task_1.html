@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із трьома
+      полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та
+      виведення дати реалізувати за допомогою методу toString.</h1>
+   <script>
+      class TDate {
+         constructor(day, month, year) {
+            this.day = day
+            this.month = month
+            this.year = year
+         }
+
+         // Метод для перетворення об'єкту дати у рядок
+         toString() {
+            return `${this.day}.${this.month}.${this.year}`
+         }
+
+         // Метод для додавання певної кількості днів до дати
+         addDays(days) {
+            let date = new Date(`${this.year}-${this.month}-${this.day}`);
+            date.setDate(date.getDate() + days)
+            this.day = date.getDate()
+            this.month = date.getMonth() + 1 //метод getMonth() повертає значення в діапазоні від 0 до 11
+            this.year = date.getFullYear()
+         }
+
+         // Метод для додавання певної кількості місяців до дати
+         addMonths(months) {
+            let date = new Date(`${this.year}-${this.month}-${this.day}`);
+            date.setMonth(date.getMonth() + months)
+            this.day = date.getDate()
+            this.month = date.getMonth() + 1//метод getMonth() повертає значення в діапазоні від 0 до 11
+            this.year = date.getFullYear()
+         }
+
+         // Метод для додавання певної кількості років до дати
+         addYears(years) {
+            this.year += years
+         }
+
+         // Метод для віднімання певної кількості днів від дати
+         subtractDays(days) {
+            this.addDays(-days)
+         }
+
+         // Метод для віднімання певної кількості місяців від дати
+         subtractMonths(months) {
+            this.addMonths(-months)
+         }
+
+         // Метод для віднімання певної кількості років від дати
+         subtractYears(years) {
+            this.addYears(-years);
+         }
+      }
+
+      //=============================Приклади=====================
+      
+//       let date = new TDate(12, 4, 2023);
+// console.log(date.toString())
+// document.write(`${date}`)
+// date.addDays(19)
+// console.log(date.toString())
+
+// date.addMonths(2)
+// console.log(date.toString())
+
+// date.addYears(1)
+// console.log(date.toString())
+
+// date.subtractDays(3)
+// console.log(date.toString())
+
+// date.subtractMonths(2)
+// console.log(date.toString())
+
+// date.subtractYears(1)
+// console.log(date.toString())
+
+
+   </script>
+</body>
+
+</html>
