@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Завдання 5</title>
+</head>
+
+<body>
+   <h1>Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис),
+      назва книги, жанр, видавництво (назва, реєстраційний номер, рік заснування)). Реалізувати розділи бібліотеки
+      (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час.
+      Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+   </h1>
+   <script>
+      class Book {
+         constructor(title, author, genre, publisher, yearWritingBook, publisherRegNum, publisherYearFundatiom) {
+            this.author = author
+            this.title = title
+            this.genre = genre
+            this.publisher = publisher
+            this.yearWritingBook = yearWritingBook
+            this.publisherRegNum = publisherRegNum
+            this.publisherYearFundatiom = publisherYearFundatiom
+         }
+      }
+
+      class Library {
+         constructor() {
+            this.books = [];
+         }
+
+         // Додати книгу до бібліотеки
+         addBook(book) {
+            this.books.push(book);
+         }
+
+         // Видалити книгу з бібліотеки
+         removeBook(book) {
+            const index = this.books.indexOf(book);
+            if (index !== -1) {
+               this.books.splice(index, 1);
+            }
+         }
+
+
+         // Знайти книги за назвою
+         findBooksByTitle(title) {
+            return this.books.filter(book => book.title === title)
+         }
+
+         // Знайти книги за ПІБ автора
+         findBooksByAuthor(author) {
+            return this.books.filter(book => book.author === author)
+         }
+
+         // Знайти книги за видавництвом
+         findBooksByPublisher(publisher) {
+            return this.books.filter(book => book.publisher === publisher)
+         }
+      }
+
+
+      const myLibrary = new Library();
+
+      const book1 = new Book(
+         "JavaScript: The Definitive Guide",
+         "David Flanagan",
+         "Programming",
+         "O'Reilly Media",
+         "2002",
+         "124356ui7876",
+         "1978"
+      );
+      const book2 = new Book(
+         "Clean Code: A Handbook of Agile Software Craftsmanship",
+         "Robert C. Martin",
+         "Programming",
+         "Prentice Hall",
+         "2008",
+         "8765432",
+         "1913"
+      );
+
+      myLibrary.addBook(book1)
+      myLibrary.addBook(book2)
+      console.log(myLibrary)
+
+      const booksByAuthor = myLibrary.findBooksByAuthor("David Flanagan")
+      console.log(booksByAuthor)
+
+      const booksByPublisher = myLibrary.findBooksByPublisher("Prentice Hall")
+      console.log(booksByPublisher)
+
+
+
+   </script>
+</body>
+
+</html>

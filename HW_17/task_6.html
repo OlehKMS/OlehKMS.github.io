@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 5</title>
+</head>
+
+<body>
+   <h1>Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба
+      перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які
+      треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory, який зберігає історію
+      тестування у масиві у вигляді об'єктів
+      Приклад.
+      testsList= [
+      {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},
+      {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},
+      ]
+      Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
+      Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач
+      (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються
+      в об’єкт History. Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач
+      вивести усю історію на екран.
+   </h1>
+   <script>
+      class TestData {
+         constructor(firstNum, secondNum, operation, userAnswer, correctAnswer) {
+            this.firstNum = firstNum;
+            this.secondNum = secondNum;
+            this.operation = operation;
+            this.userAnswer = userAnswer;
+            this.correctAnswer = correctAnswer;
+         }
+      }
+
+      class History {
+         constructor() {
+            this.testsList = [];
+         }
+
+         addTest(testData) {
+            this.testsList.push(testData);
+         }
+
+         getTests() {
+            return this.testsList;
+         }
+      }
+
+      class MultChecker {
+         constructor() {
+            this.firstNum = Math.floor(Math.random() * 10) + 1;
+            this.secondNum = Math.floor(Math.random() * 10) + 1;
+         }
+
+         getTestData() {
+            const correctAnswer = this.firstNum * this.secondNum;
+            return new TestData(this.firstNum, this.secondNum, '*', null, correctAnswer);
+         }
+      }
+
+      class AddChecker {
+         constructor() {
+            this.firstNum = Math.floor(Math.random() * 10) + 1;
+            this.secondNum = Math.floor(Math.random() * 10) + 1;
+         }
+
+         getTestData() {
+            const correctAnswer = this.firstNum + this.secondNum;
+            return new TestData(this.firstNum, this.secondNum, '+', null, correctAnswer);
+         }
+      }
+
+      class TestManager {
+         constructor() {
+            if (TestManager.instance) {
+               return TestManager.instance;
+            }
+            TestManager.instance = this;
+            this.history = new History();
+            this.timerId = null;
+         }
+
+         startTests(N) {
+            this.timerId = setInterval(() => {
+               const checker = Math.random() < 0.5 ? new AddChecker() : new MultChecker();
+               const testData = checker.getTestData();
+               this.askQuestion(testData);
+            }, 1000);
+
+            setTimeout(() => {
+               clearInterval(this.timerId);
+               this.showResults();
+            }, N * 1000);
+         }
+
+         askQuestion(testData) {
+            testData.userAnswer = prompt(`${testData.firstNum} ${testData.operation} ${testData.secondNum} = ?`);
+            this.history.addTest(testData);
+         }
+
+         showResults() {
+            console.log('Test results:');
+            const testsList = this.history.getTests();
+            for (const test of testsList) {
+               console.log(
+                  `${test.firstNum} ${test.operation} ${test.secondNum} = ${test.userAnswer}, correct answer is ${test.correctAnswer}`
+               );
+            }
+         }
+      }
+
+      const testManager = new TestManager()
+      testManager.startTests(5)
+      
+
+   </script>
+</body>
+
+</html>

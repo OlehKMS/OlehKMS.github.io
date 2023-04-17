@@ -10,9 +10,85 @@
 </head>
 
 <body>
-   <h1></h1>
+   <h1>Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва,
+      реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за
+      назвою фірми
+   </h1>
    <script>
-      
+      class Product {
+         constructor(name, unit, quantity, manufacturer) {
+            this.name = name;
+            this.unit = unit;
+            this.quantity = quantity;
+            this.manufacturer = manufacturer;
+         }
+      }
+
+      class Warehouse {
+         constructor() {
+            this.products = []
+         }
+
+         addProduct(name, unit, quantity, manufacturerName, manufacturerRegNum) {
+            const manufacturer = { name: manufacturerName, regNum: manufacturerRegNum }
+            const product = new Product(name, unit, quantity, manufacturer)
+            this.products.push(product)
+         }
+
+         removeProduct(name, quantity) {
+            for (let i = 0; i < this.products.length; i++) {
+               const product = this.products[i]
+               if (product.name === name) {
+                  if (product.quantity >= quantity) {
+                     product.quantity -= quantity
+                     return true
+                  } else {
+                     return false
+                  }
+               }
+            }
+            return false
+         }
+
+         filterByName(name) {
+            const filteredProducts = [];
+            for (let i = 0; i < this.products.length; i++) {
+               const product = this.products[i];
+               if (product.name === name)
+                  filteredProducts.push(product)
+
+            }
+            return filteredProducts
+         }
+
+         filterByManufacturer(name) {
+            const filteredProducts = [];
+            for (let i = 0; i < this.products.length; i++) {
+               const product = this.products[i]
+               if (product.manufacturer.name === name)
+                  filteredProducts.push(product)
+
+            }
+            return filteredProducts
+         }
+      }
+
+
+      const warehouse = new Warehouse()
+      // реєстрація
+      warehouse.addProduct('Молоко', 'л', 1000, 'Добрянський молокозавод', '123456')
+      warehouse.addProduct('Хліб', 'шт', 500, 'Бориспільський хлібозавод', '654321')
+      warehouse.addProduct('Макарони', 'кг', 800, 'Львівський макаронний завод', '789123')
+      console.log(warehouse)
+
+      //відвантаження
+      let _delete = warehouse.removeProduct('Молоко', 500)
+      console.log(_delete)
+      //фільтрувати товари
+      const filteredByName = warehouse.filterByName('Хліб')
+      const filteredByManufacturer = warehouse.filterByManufacturer("Добрянський молокозавод")
+
+
 
 
    </script>
