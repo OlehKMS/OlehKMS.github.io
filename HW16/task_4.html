@@ -16,79 +16,60 @@
    <script>
       class TBankomat {
          constructor() {
-
-            this.banknotes = {
-               5: 10,
-               10: 20,
-               20: 30,
-               50: 40,
-               100: 50,
-               200: 60
-            }
+            // Кількість купюр кожного номіналу (в гривнях)
+            this.bills = {
+               5: 1000,
+               10: 1000,
+               20: 1000,
+               50: 1000,
+               100: 1000,
+               200: 1000,
+            };
          }
 
-         // метод знаходження максимальної суми, яку може видати банкомат
+         // Максимальна сума, яку можна видати
          getMaxSum() {
-            let maxSum = 0;
-            for (let denomination in this.banknotes) {
-               maxSum += denomination * this.banknotes[denomination];
+            let maxSum = 0
+            for (const [bill, count] of Object.entries(this.bills)) {
+               maxSum += bill * count
             }
-            return maxSum;
+            return maxSum
          }
 
-         // метод знаходження мінімальної суми, яку може видати банкомат
-         getMinSum() {
-            let minDenomination = Math.min(...Object.keys(this.banknotes));
-            return minDenomination * this.banknotes[minDenomination];
+         // Мінімальний номінал, який можна видати
+         getMinBill() {
+            for (const bill of [5, 10, 20, 50, 100, 200]) {
+               if (this.bills[bill] > 0) 
+                  return bill
+               
+            }
+            return 0
          }
 
-         // метод зняття деякої суми з банкомату
-         withdraw(sum) {
-            // перевіряємо, чи може банкомат видати дану суму
-            if (sum > this.getMaxSum()) {
-               console.log('Банкомат не може видати дану суму');
-               return;
+         // Зняття суми з банкомата
+         withdraw(amount) {
+            if (amount < this.getMinBill()) {
+               console.log("Задана сума менша мінімального номіналу купюр в банкоматі")
             }
-
-            // створюємо копію об'єкту з кількістю купюр
-            let banknotesCopy = Object.assign({}, this.banknotes);
-
-            // формуємо масив з номіналами купюр в порядку спадання
-            let denominations = Object.keys(this.banknotes).sort((a, b) => b - a);
-
-            // проходимо по кожному номіналу та визначаємо кількість купюр,
-            // необхідних для видання даної суми
-            let requiredBanknotes = {};
-            let remainingSum = sum;
-            for (let denomination of denominations) {
-               let banknotesCount = Math.floor(remainingSum / denomination);
-               if (banknotesCount > banknotesCopy[denomination]) {
-                  banknotesCount = banknotesCopy[denomination];
+            if (amount > this.getMaxSum()) {
+               console.log("Задана сума більша максимальної суми, яку можна видати")
+            }
+            const result = {}
+            for (let bill of [200, 100, 50, 20, 10, 5]) {
+               const count = Math.min(Math.floor(amount / bill), this.bills[bill])
+               if (count > 0) {
+                  result[bill] = count
+                  amount -= bill * count
+                  this.bills[bill] -= count
                }
-               requiredBanknotes[denomination] = banknotesCount;
-               remainingSum -= banknotesCount * denomination;
             }
-
-            // якщо суму не вдалось видати повністю,
-            // виводимо повідомлення та повертаємо false
-            if (remainingSum > 0) {
-               console.log('Банкомат не може видати дану суму');
-               return false;
-            }
-
-            // зменшуємо кількість купюр у банкоматі
-            for (let denomination in requiredBanknotes) {
-               banknotesCopy[denomination] -= requiredBanknotes[denomination];
-            }
-
-            // оновлюємо кількість купюр у банкоматі
-            this.banknotes = banknotesCopy
+            
+            return result
          }
       }
-      const bankomat = new TBankomat(2200)
-      console.log(bankomat.withdraw())
-      console.log(bankomat.getMinSum())
-      console.log(bankomat.withdraw())
+      const testBankomat = new TBankomat()
+      const cashWithdrawal = 3350
+      console.log(testBankomat.withdraw(cashWithdrawal))
    </script>
 
 </body>

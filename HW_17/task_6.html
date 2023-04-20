@@ -26,96 +26,100 @@
       вивести усю історію на екран.
    </h1>
    <script>
-      class TestData {
-         constructor(firstNum, secondNum, operation, userAnswer, correctAnswer) {
-            this.firstNum = firstNum;
-            this.secondNum = secondNum;
-            this.operation = operation;
-            this.userAnswer = userAnswer;
-            this.correctAnswer = correctAnswer;
-         }
-      }
-
-      class History {
-         constructor() {
-            this.testsList = [];
-         }
-
-         addTest(testData) {
-            this.testsList.push(testData);
-         }
-
-         getTests() {
-            return this.testsList;
-         }
-      }
-
       class MultChecker {
-         constructor() {
-            this.firstNum = Math.floor(Math.random() * 10) + 1;
-            this.secondNum = Math.floor(Math.random() * 10) + 1;
-         }
+         constructor() { }
 
-         getTestData() {
-            const correctAnswer = this.firstNum * this.secondNum;
-            return new TestData(this.firstNum, this.secondNum, '*', null, correctAnswer);
+         generateNumbers() {
+            const firstNum = Math.floor(Math.random() * 10) + 1
+            const secondNum = Math.floor(Math.random() * 10) + 1
+            const operation = "*"
+            const correctAnswer = firstNum * secondNum
+            return new TestData(firstNum, secondNum, operation, correctAnswer)
          }
       }
 
       class AddChecker {
+         constructor() { }
+
+         generateNumbers() {
+            const firstNum = Math.floor(Math.random() * 10) + 1
+            const secondNum = Math.floor(Math.random() * 10) + 1
+            const operation = "+"
+            const correctAnswer = firstNum + secondNum
+            return new TestData(firstNum, secondNum, operation, correctAnswer)
+         }
+      }
+
+      class Hystory {
          constructor() {
-            this.firstNum = Math.floor(Math.random() * 10) + 1;
-            this.secondNum = Math.floor(Math.random() * 10) + 1;
+            this.testsList = []
          }
 
-         getTestData() {
-            const correctAnswer = this.firstNum + this.secondNum;
-            return new TestData(this.firstNum, this.secondNum, '+', null, correctAnswer);
+         addTest(test) {
+            this.testsList.push(test)
+            // console.log(listTest)
+            let listTest = JSON.stringify(test)
+            document.write(`${listTest}<br>`)
+         }
+      }
+
+      class TestData {
+         constructor(firstNum, secondNum, operation, correctAnswer) {
+            this.firstNum = firstNum
+            this.secondNum = secondNum
+            this.operation = operation
+            this.correctAnswer = correctAnswer
+            this.userAnswer = null
+         }
+
+         setUserAnswer(answer) {
+            this.userAnswer = answer
          }
       }
 
       class TestManager {
-         constructor() {
-            if (TestManager.instance) {
-               return TestManager.instance;
+         constructor(numOfTests) {
+            if (TestManager.instance instanceof TestManager) {
+               return TestManager.instance
             }
-            TestManager.instance = this;
-            this.history = new History();
-            this.timerId = null;
+
+            this.history = new Hystory()
+            this.numOfTests = numOfTests
+            TestManager.instance = this
          }
 
-         startTests(N) {
-            this.timerId = setInterval(() => {
-               const checker = Math.random() < 0.5 ? new AddChecker() : new MultChecker();
-               const testData = checker.getTestData();
-               this.askQuestion(testData);
-            }, 1000);
+         runTests() {
+            const tests = []
+            for (let i = 0; i < this.numOfTests; i++) {
+               const isMultiplication = Math.random() >= 0.5
+               const test = isMultiplication
+                  ? new MultChecker().generateNumbers()
+                  : new AddChecker().generateNumbers()
+               tests.push(test)
+            }
 
             setTimeout(() => {
-               clearInterval(this.timerId);
-               this.showResults();
-            }, N * 1000);
+               tests.forEach((test) => {
+                  this.askQuestion(test)
+               })
+            }, 1000)
          }
 
-         askQuestion(testData) {
-            testData.userAnswer = prompt(`${testData.firstNum} ${testData.operation} ${testData.secondNum} = ?`);
-            this.history.addTest(testData);
-         }
-
-         showResults() {
-            console.log('Test results:');
-            const testsList = this.history.getTests();
-            for (const test of testsList) {
-               console.log(
-                  `${test.firstNum} ${test.operation} ${test.secondNum} = ${test.userAnswer}, correct answer is ${test.correctAnswer}`
-               );
+         askQuestion(test) {
+            const userAnswer = prompt(
+               `What is ${test.firstNum} ${test.operation} ${test.secondNum}?`
+            )
+            test.setUserAnswer(userAnswer)
+            this.history.addTest(test)
+            if (this.history.testsList.length === this.numOfTests) {
+               console.log(this.history.testsList)
             }
          }
       }
 
-      const testManager = new TestManager()
-      testManager.startTests(5)
-      
+      const testManager = new TestManager(3)
+      testManager.runTests()
+
 
    </script>
 </body>
