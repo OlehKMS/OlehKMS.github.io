@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="UA">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,58 @@
    <link rel="stylesheet" href="../style.css">
    <title>Задача 2</title>
 </head>
+
 <body>
+   <h1> Конвертер валют</h1>
+   <form class="form_convertor">
+      <div><label for="from">Валюта:</label>
+         <select id="from" name="from">
+            <option value="usd">UA</option>
+
+         </select>
+
+         <label for="amount">Кількість:</label>
+         <input type="number" id="amount" name="amount" min="0" step="1">
+      </div>
+
+      <div class="currency_block">
+         <select id="usa" name="to">
+            <option value="usd">Доллар США (USD)</option>
+
+         </select>
+         <input id="usa_input" type="number">
+      </div>
+      <div class="currency_block">
+         <select name="to" id="">
+            <option value="eur">Евро (EUR)</option>
+         </select>
+         <input id="eu_input" type="number">
+      </div>
+
+      <button type="button" id="convert-button">Конвертировать</button>
+
+   </form>
+   <div id="result"></div>
+<script>
+const euInput = document.getElementById("eu_input")
+const usaInput = document.getElementById("usa_input")
+const uaInput = document.getElementById('amount')
+const exchangeEu = 41
+const exchangeUsa = 37.75
+//====================================================
+const btnConvert = document.getElementById('convert-button')
+
+btnConvert.addEventListener("click", function(){
+   const uaValue = parseFloat(uaInput.value)
    
+   euInput.value =(uaValue/exchangeEu).toFixed(2) //${uaValue}/${exchangeEu}
+   usaInput.value = (uaValue/exchangeUsa).toFixed(2)
+})
+
+
+
+</script>
+
 </body>
+
 </html>

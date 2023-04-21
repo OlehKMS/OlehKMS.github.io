@@ -29,38 +29,43 @@
       <input id="result" type="number" placeholder="Result" />
    </label>
 
-      <script>
-         function assigment() {
-            const num1 = parseFloat(document.getElementById('first').value)
-            const num2 = parseFloat(document.getElementById('second').value)
-            const sum = num1 + num2
-            document.getElementById('result').value = sum
+   <script>
+      const firstInput = document.getElementById('first')
+      const secondInput = document.getElementById('second')
+      const resultInput = document.getElementById('result')
+
+      function calculate(operation) {
+         const num1 = parseFloat(firstInput.value)
+         const num2 = parseFloat(secondInput.value)
+         let result
+
+         switch (operation) {
+            case '+':
+               result = num1 + num2
+               break
+            case '-':
+               result = num1 - num2
+               break
+            case '*':
+               result = num1 * num2
+               break
+            case '/':
+               result = num1 / num2
+               break
+            default:
+               return
          }
-         function deduction() {
-            const num1 = parseFloat(document.getElementById('first').value)
-            const num2 = parseFloat(document.getElementById('second').value)
-            const minus = num1 - num2
-            document.getElementById('result').value = minus
-         }
-         function multy() {
-            const num1 = parseFloat(document.getElementById('first').value)
-            const num2 = parseFloat(document.getElementById('second').value)
-            const multi = num1 * num2
-            document.getElementById('result').value = multi
-         }
-         function divide(){
-            const num1 = parseFloat(document.getElementById('first').value)
-            const num2 = parseFloat(document.getElementById('second').value)
-            const dividet = num1 / num2
-            document.getElementById('result').value = dividet
-         }
-         window.onload = function () {
-            document.getElementById("add").onclick = assigment
-            document.getElementById("minus").onclick = deduction
-            document.getElementById("multy").onclick = multy
-            document.getElementById("divid").onclick = divide
-         }
-      </script>
+
+         resultInput.value = result
+      }
+
+      window.onload = function() {
+         document.getElementById('add').addEventListener('click', () => calculate('+'))
+         document.getElementById('minus').addEventListener('click', () => calculate('-'))
+         document.getElementById('multy').addEventListener('click', () => calculate('*'))
+         document.getElementById('divid').addEventListener('click', () => calculate('/'))
+      }
+   </script>
 </body>
 
 </html>
