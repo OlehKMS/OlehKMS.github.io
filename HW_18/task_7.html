@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 7</title>
+</head>
+
+<body>
+   <h1>Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто,
+      автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+      гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+   </h1>
+   <h2>Подорож</h2>
+   <form id="form">
+      <div>
+         <label for="transport">Транспорт: </label>
+         <select id="transport">
+            <option value="0">- виберіть транспорт -</option>
+            <option value="100">Авто - 100 грн</option>
+            <option value="150">Автобус - 150 грн</option>
+            <option value="500">Літак - 500 грн</option>
+         </select>
+      </div>
+      <div>
+         <label>Харчування:</label><br>
+         <label><input type="checkbox" name="food" value="breakfast"> Сніданок - 50 грн</label><br>
+         <label><input type="checkbox" name="food" value="lunch"> Обід - 100 грн</label><br>
+         <label><input type="checkbox" name="food" value="dinner"> Вечеря - 80 грн</label><br>
+
+      </div>
+      <div>
+         <label>Гід:</label><br>
+         <label><input type="radio" name="guide" value="200"> Гід1 - 200 грн</label><br>
+         <label><input type="radio" name="guide" value="150"> Гід2 - 150 грн</label><br>
+         <label><input type="radio" name="guide" value="100"> Гід3 - 100 грн</label><br>
+      </div>
+      <button type="button" id="count">Розрахувати вартість</button>
+   </form>
+
+   <script>
+      // Определяем конструктор для объекта "Путешествие"
+      function Travel() {
+         this.transport = "";
+         this.food = [];
+         this.guide = "";
+         this.price = 0;
+      }
+
+      // Добавляем метод для получения стоимости путешествия
+      Travel.prototype.getTotalPrice = function () {
+         let totalPrice = 0;
+
+         // Вычисляем стоимость транспорта
+         switch (this.transport) {
+            case "100":
+               totalPrice += 100;
+               break;
+            case "150":
+               totalPrice += 150;
+               break;
+            case "500":
+               totalPrice += 500;
+               break;
+         }
+
+
+         // Вычисляем стоимость питания
+         if (this.food.includes("breakfast")) {
+            totalPrice += 50;
+         }
+         if (this.food.includes("lunch")) {
+            totalPrice += 100;
+         }
+         if (this.food.includes("dinner")) {
+            totalPrice += 80;
+         }
+
+         // Вычисляем стоимость гида
+         switch (this.guide) {
+            case "200":
+               totalPrice += 200;
+               break;
+            case "150":
+               totalPrice += 150;
+               break;
+            case "100":
+               totalPrice += 100;
+               break;
+         }
+
+
+         // Возвращаем общую стоимость путешествия
+         return totalPrice;
+      };
+
+      // Создаем экземпляр объекта "Путешествие"
+      const travel = new Travel();
+
+      // Получаем ссылки на элементы управления формы
+      const transportSelect = document.getElementById("transport");
+      const foodCheckboxes = document.querySelectorAll("input[name='food']");
+      const guideRadios = document.querySelectorAll("input[name='guide']");
+
+      // Добавляем обработчик события на выбор транспорта
+      transportSelect.addEventListener("change", function (event) {
+         if (event.target.value !== "0") {
+            travel.transport = event.target.value;
+            travel.totalPrice = travel.getTotalPrice();
+            updatePrice();
+         }
+      });
+
+
+      // Добавляем обработчик события на выбор питания
+      foodCheckboxes.forEach(function (checkbox) {
+         checkbox.addEventListener("change", function (event) {
+            if (event.target.checked) {
+               travel.food.push(event.target.value);
+            } else {
+               const index = travel.food.indexOf(event.target.value);
+               if (index !== -1) {
+                  travel.food.splice(index, 1);
+               }
+            }
+            travel.price = travel.getTotalPrice();
+            updatePrice();
+         });
+      });
+
+      // Добавляем обработчик события на выбор гида
+      guideRadios.forEach(function (radio) {
+         radio.addEventListener("change", function (event) {
+            travel.guide = event.target.value;
+            travel.price = travel.getTotalPrice();
+            updatePrice();
+         });
+      });
+      // Добавляем обработчик события на кнопку "Рассчитать стоимость"
+      document.getElementById("count").addEventListener("click", function (event) {
+         alert("Стоимость путешествия: " + travel.price + " грн");
+      });
+
+
+   </script>
+</body>
+
+</html>

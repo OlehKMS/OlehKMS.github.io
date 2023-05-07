@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 5</title>
+</head>
+
+<body>
+   <h1>Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)
+   </h1>
+   
+   <script>
+      class RandomTable {
+         constructor(rowsCount, columsCount, minValue, maxValie) {
+            this.rowsCount = rowsCount
+            this.columsCount = columsCount
+            this.minValue = minValue
+            this.maxValie = maxValie
+         }
+         getRandomNumber() {
+            return (Math.floor(Math.random() * (this.maxValie - this.minValue + 1) + this.minValue))
+         }
+         
+         render(container) {
+            const table = document.createElement('table')
+
+            for (let i = 1; i <= this.rowsCount; i++) {
+               const row = document.createElement('tr')
+               for (let j = 1; j <= this.columsCount; j++) {
+                  const colums = document.createElement('td')
+                  const randomNum = this.getRandomNumber()
+                  colums.textContent = randomNum
+                  row.appendChild(colums)
+               } table.appendChild(row)
+            }
+            document.body.appendChild(table)
+         }
+      }
+      const call = new RandomTable(4,3,1,10)
+      call.render(document.body)
+
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Задача 6</title>
+</head>
+
+<body>
+   <h1>Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з
+      input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.</h1>
+   <form>
+      Price number: <input id="price_num" type="number" value="number" />
+      <button id="get_table">get table</button>
+   </form>
+   <form id="form_for_table">
+      <button id="get_sum">get sum</button>
+   </form>
+   <script>
+      const btnGetTable = document.getElementById('get_table')
+      const formTable = document.getElementById('form_for_table')
+      //====================
+
+
+      btnGetTable.onclick = function () {
+         event.preventDefault()//скасування оновлення сторінки після onclick
+         const priceNum = document.getElementById('price_num')
+         const priceNumVal = parseFloat(priceNum.value)
+         for (let i = 1; i <= priceNumVal; i++) {
+            const createInput = document.createElement('input')
+            createInput.type = 'number'
+            formTable.insertAdjacentElement('beforeend', createInput)
+
+         }
+      }
+      //===========================
+      const btnGetSum = document.getElementById('get_sum')
+      //=====================================
+      
+      btnGetSum.onclick = function () {
+         const inputs = formTable.querySelectorAll('input[type="number"]')
+         const quanityInputs = inputs.length
+         let sum = 0
+         let averageVal = 0
+         for (let i = 0; i < quanityInputs; i++) {
+            sum += parseFloat(inputs[i].value)
+
+         }
+         averageVal= sum/quanityInputs
+         
+         alert(averageVal)
+      }
+
+   </script>
+</body>
+
+</html>

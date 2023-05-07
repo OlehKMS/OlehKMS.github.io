@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../style.css">
+   <title>Document</title>
+</head>
+<body>
+   <h1>Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)</h1>
+   <div id="main_whish">
+
+   </div>
+   <script>
+      const wishlist = [
+  "1. Подорож у Грецію",
+  "2. Навчитись грати на гітарі",
+  "3. Книга \"Майстер і Маргарита\"",
+  "4. Навчитись готувати суші",
+  "5. Нова камера",
+  "6. Квитки на концерт Imagine Dragons",
+  "7. Подорож до Норвегії",
+  "8. Навчитись в'язати",
+  "9. Книга \"Війна і мир\"",
+  "10. Навчитись грати в шахи",
+  "11. Нові кросівки",
+  "12. Квитки на фестиваль Glastonbury",
+  "13. Подорож до Токіо",
+  "14. Книга \"Ідіот\"",
+  "15. Навчитись готувати піцу",
+  "16. Гамак для відпочинку",
+  "17. Подорож до Марокко",
+  "18. Навчитись писати на древніх папірусах",
+  "19. Книга \"Преступленіє і кара\"",
+  "20. Навчитись танцювати сальсу",
+  "21. М'яка і затишна ковдра"
+];
+
+let arrListNumbers = wishlist.length
+
+window.onload = function randomWhish() {
+   let mainWhish = document.getElementById('main_whish')
+   for (let i = 1; i <= 3; i++) {
+      const randomNum = Math.floor(Math.random()*arrListNumbers)
+      // document.write(`<div>${wishlist[randomNum]}</div> `)
+      mainWhish.insertAdjacentHTML('afterend', '<div>' + wishlist[randomNum] + '</div>')
+   }
+}
+
+   </script>
+</body>
+</html>
